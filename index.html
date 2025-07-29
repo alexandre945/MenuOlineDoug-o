@@ -1,0 +1,633 @@
+<!-- <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <title>Cardápio - Dougão Lanches</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #5a3d26;
+    }
+
+    .cardapio {
+      max-width: 600px;
+      margin: 30px auto;
+      background: #fdf9f3;
+      padding: 30px 40px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      border: 8px solid #3b2a1a;
+    }
+    .cardapio {
+       background-image: url('./image/fhoto.png');
+       background-size: cover;        /* Faz a imagem cobrir todo o elemento */
+       background-position: center;   /* Centraliza a imagem */
+       background-repeat: no-repeat;  /* Evita que a imagem se repita */
+       background-color: rgba(0, 0, 0, 0.5); /* preto com 50% de transparência */
+       background-blend-mode: overlay;       /* mescla a cor com a imagem */
+    }
+  
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      max-width: 200px;
+      border-radius: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      color: #3b2a1a;
+      margin-bottom: 30px;
+    }
+    .item .p {
+          font-size: 25px;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 25px;
+    }
+
+    .item .info {
+      max-width: 80%;
+    }
+
+    .item h2 {
+      margin: 0;
+      font-size: 20px;
+      color: #cc6a00;
+    }
+
+    .item p {
+      margin: 4px 0 0;
+      font-size: 15px;
+      color: white;
+    }
+
+    .preco {
+      width: 90px;
+      height: 40px;
+      border: 2px solid #444;
+      background: #fff;
+      border-radius: 6px;
+    }
+      .titulo-impacto {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    color: rgb(202, 70, 44);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+  .menu {
+    color: white;
+  }
+
+    @media print {
+      body {
+        background: white;
+      }
+      .cardapio {
+        box-shadow: none;
+        border: none;
+      }
+    }
+  </style>
+</head>
+<body>
+    
+  <div class="cardapio">
+    <h1 class="titulo-impacto">DOUGÃO LANCHES</h1>
+ 
+    <h1 class="menu">MENU</h1>
+
+    <div class="item">
+      <div class="info">
+        <h2>14 - CROK</h2>
+        <p>Hambúrguer 90gr, mussarela, bacon, tomate, milho, batata e maionese</p>
+      </div>
+      <div class="preco"></div>
+    </div>
+
+    <div class="item">
+      <div class="info">
+        <h2>15 - ESPERTÃO</h2>
+        <p>Hambúrguer 90gr, mussarela, presunto, catupiry, alface, tomate, milho, batata e maionese</p>
+      </div>
+      <div class="preco"></div>
+    </div>
+
+    <div class="item">
+      <div class="info">
+        <h2>16 - BAURU</h2>
+        <p>Presunto, mussarela, tomate, batata e maionese</p>
+      </div>
+      <div class="preco"></div>
+    </div>
+
+    <div class="item">
+      <div class="info">
+        <h2>17 - PRENSADO</h2>
+        <p>Presunto, mussarela, milho, tomate, batata e maionese</p>
+      </div>
+      <div class="preco"></div>
+    </div>
+
+    <div class="item">
+      <div class="info">
+        <h2>18 - AMERICANO</h2>
+        <p>Presunto, mussarela, ovo, tomate, milho, alface, batata e maionese</p>
+      </div>
+      <div class="preco"></div>
+    </div>
+
+    <div class="item">
+      <div class="info">
+        <h2>19 - VEGETARIANO</h2>
+        <p>Ovo, alface, milho, tomate, batata e maionese</p>
+      </div>
+      <div class="preco"></div>
+    </div>
+
+    <div class="item">
+      <div class="info">
+        <h2>20 - X-GALINHA SALADA</h2>
+        <p>Frango, mussarela, milho, tomate, alface, batata e maionese</p>
+      </div>
+      <div class="preco"></div>
+    </div>
+  </div>
+</body>
+</html> -->
+ 
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Cardápio Dougão Lanches</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      function mudarPagina(paginaId) {
+        document.getElementById(paginaId).scrollIntoView({ behavior: 'smooth' });
+      }
+      function voltarAoTopo() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    </script>
+  </head>
+  <body class="bg-yellow-50 text-gray-800">
+
+    <header class="sticky top-0 z-10 bg-yellow-400 shadow p-4 flex flex-col gap-2">
+      <div>
+        <h1 class=" font-bold text-center text-3xl p-2">🍔 Dougão Lanches</h1>
+      </div>
+        <nav class="flex justify-center gap-2 my-4">
+          <button onclick="mudarPagina('lanches')" class="px-3 py-1 text-sm rounded border border-gray-300 bg-white shadow hover:bg-yellow-300 hover:text-black transition">Lanches</button>
+          <button onclick="mudarPagina('combos')" class="px-3 py-1 text-sm rounded border border-gray-300 bg-white shadow hover:bg-yellow-300 hover:text-black transition">Combos</button>
+          <button onclick="mudarPagina('bebidas')" class="px-3 py-1 text-sm rounded border border-gray-300 bg-white shadow hover:bg-yellow-300 hover:text-black transition">Bebidas</button>
+          <button onclick="mudarPagina('bomboniere')" class="px-3 py-1 text-sm rounded border border-gray-300 bg-white shadow hover:bg-yellow-300 hover:text-black transition">Bomboniere</button>
+        </nav>
+    </header>
+
+
+    <main class="px-4 pb-24 space-y-16">
+      <!-- LANCHES -->
+      <section id="lanches" class="pt-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">01. Misto</h2>
+            <p class="text-sm">Presunto, mussarela e maionese.</p>
+            <p class="text-right font-semibold mt-1">R$ 16,00</p>
+            <button 
+                class="mt-2 bg-yellow-400 px-3 py-1 rounded" 
+                onclick="abrirModal(' Misto', 'Presunto, mussarela e maionese.', 16.00, true)">
+                Adicionar
+            </button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">02. Hamburger</h2>
+            <p class="text-sm">Hambúrguer 90g, tomate e maionese.</p>
+            <p class="text-right font-semibold mt-1">R$ 16,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+            onclick="abrirModal('Hambúguer','Hambúrer 90gr tomate e maionese',16.00, true)"
+            >Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">03. X-Funkeiro</h2>
+            <p class="text-sm">Hambúrguer 56g, mussarela, presunto, milho, alface, tomate, batata e maionese.</p>
+            <p class="text-right font-semibold mt-1">R$ 17,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+              onclick="abrirModal('X-Funkeiro','Hambúrguer 56g, mussarela, presunto, milho, alface, tomate, batata e maionese',17.00, true )"
+              >Adicionar
+            </button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">04. X-Burguer</h2>
+            <p class="text-sm">Hambúrguer 90g, mussarela, tomate e maionese.</p>
+            <p class="text-right font-semibold mt-1">R$ 18,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+              onclick="abrirModal('X-Burguer','Hambúrguer 90g, mussarela, tomate e maionese.',18.00, true)"
+              >Adicionar
+            </button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">05. X-Salada Completo</h2>
+            <p class="text-sm">Hambúrguer 90g, mussarela, alface, tomate, milho, batata e maionese.</p>
+            <p class="text-right font-semibold mt-1">R$ 20,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+              onclick="abrirModal('X-Salada Completo','Hambúrguer 90g, mussarela, alface, tomate, milho, batata e maionese',20.00, true)"
+            >Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">06. X-Egg</h2>
+            <p class="text-sm">Hambúrguer 90g, mussarela, tomate, ovo, batata e maionese.</p>
+            <p class="text-right font-semibold mt-1">R$ 20,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+              onclick="abrirModal('X-Egg','Hambúrguer 90g, mussarela, tomate, ovo, batata e maionese.',20.00, true)"
+              >Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">07. X Egg Salada</h2>
+            <p class="text-sm">Hambúrguer 90g, mussarela, tomate, alface, ovo, milho, batata e maionese.</p>
+            <p class="text-right font-semibold mt-1">R$ 21,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+              onclick="abrirModal('Egg Salada','Hambúrguer 90g, mussarela, tomate, alface, ovo, milho, batata e maionese.',21.00, true)"
+            >Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">08. X Bacon</h2>
+            <p class="text-sm">Hambúrguer 90g, mussarela, bacon, tomate, batata e maionese.</p>
+            <p class="text-right font-semibold mt-1">R$ 22,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+              onclick="abrirModal('X Bacon','Hambúrguer 90g, mussarela, bacon, tomate, batata e maionese.',22.00, true)"
+            >Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">09. X Bacon Salada</h2>
+            <p class="text-sm">Hambúrguer 90g, mussarela, bacon, alface, tomate, milho, batata e maionese.</p>
+            <p class="text-right font-semibold mt-1">R$ 23,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+              onclick="abrirModal('X Bacon Salada','Hambúrguer 90g, mussarela, bacon, alface, tomate, milho, batata e maionese.',23.00, true)"
+            >Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">10. X Egg Bacon Salada</h2>
+            <p class="text-sm">Hambúrguer 90g, mussarela, bacon, ovo, alface, tomate, milho, batata e maionese.</p>
+            <p class="text-right font-semibold mt-1">R$ 24,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+              onclick="abrirModal('X Egg Bacon Salada','Hambúrguer 90g, mussarela, bacon, ovo, alface, tomate, milho, batata e maionese.',24.00, true)"
+            >Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">11. X Egg Bacon</h2>
+            <p class="text-sm">Hambúrguer 90g, mussarela, bacon, ovo, tomate, batata e maionese.</p>
+            <p class="text-right font-semibold mt-1">R$ 23,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+            onclick="abrirModal('X Egg Bacon','Hambúrguer 90g, mussarela, bacon, ovo, tomate, batata e maionese.',23.00, true)"
+            >Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">12. Especial</h2>
+            <p class="text-sm">Hambúrguer 90g, mussarela, presunto, tomate, milho, batata e maionese.</p>
+            <p class="text-right font-semibold mt-1">R$ 22,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+            onclick="abrirModal('Especial','Hambúrguer 90g, mussarela, presunto, tomate, milho, batata e maionese.',22.00, true)"
+            >Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">13. Sanduba</h2>
+            <p class="text-sm">Hambúrguer 90g, mussarela, presunto, tomate, milho, ovo, alface, batata e maionese.</p>
+            <p class="text-right font-semibold mt-1">R$ 23,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+            onclick="abrirModal('Sanduba','Hambúrguer 90g, mussarela, presunto, tomate, milho, ovo, alface, batata e maionese.',23.00, true)"
+            >Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">14. Crok</h2>
+            <p class="text-sm">Hambúrguer 90g, mussarela, bacon, tomate, milho, batata e maionese.</p>
+            <p class="text-right font-semibold mt-1">R$ 23,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+              onclick="abrirModal('Crok','Hambúrguer 90g, mussarela, bacon, tomate, milho, batata e maionese.',23.00, true)"
+            >Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">15. Esperto</h2>
+            <p class="text-sm">Hambúrguer 90g, mussarela, presunto, catupiry, alface, tomate, batata e maionese.</p>
+            <p class="text-right font-semibold mt-1">R$ 26,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+              onclick="abrirModal('Esperto','Hambúrguer 90g, mussarela, presunto, catupiry, alface, tomate, batata e maionese.',26.00, true)"
+            >Adicionar</button>
+          </div>
+
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+        <h2 class="font-bold text-lg">16. Bauru</h2>
+        <p class="text-sm">Presunto, mussarela, tomate, batata e maionese.</p>
+        <p class="text-right font-semibold mt-1">R$ 18,00</p>
+        <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+          onclick="abrirModal('Bauru','Presunto, mussarela, tomate, batata e maionese.',18.00, true)"
+        >Adicionar</button>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="font-bold text-lg">17. Prensado</h2>
+        <p class="text-sm">Presunto, mussarela, milho, tomate, batata e maionese.</p>
+        <p class="text-right font-semibold mt-1">R$ 19,00</p>
+        <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+          onclick="abrirModal('Prensado','Presunto, mussarela, milho, tomate, batata e maionese.',19.00, true)"
+        >Adicionar</button>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="font-bold text-lg">18. Americano</h2>
+        <p class="text-sm">Presunto, mussarela, ovo, tomate, milho, alface, batata e maionese.</p>
+        <p class="text-right font-semibold mt-1">R$ 21,00</p>
+        <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+          onclick="abrirModal('Americano','Presunto, mussarela, ovo, tomate, milho, alface, batata e maionese.',21.00, true)"
+        >Adicionar</button>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="font-bold text-lg">19. Vegetariano</h2>
+        <p class="text-sm">Mussarela, ovo, alface, milho, tomate, batata e maionese.</p>
+        <p class="text-right font-semibold mt-1">R$ 18,00</p>
+        <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+          onclick="abrirModal('Vegetariano','Mussarela, ovo, alface, milho, tomate, batata e maionese.',18.00, true)"
+        >Adicionar</button>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="font-bold text-lg">20. X Galinha Salada</h2>
+        <p class="text-sm">Frango, mussarela, milho, tomate, alface, batata e maionese.</p>
+        <p class="text-right font-semibold mt-1">R$ 22,00</p>
+        <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+          onclick="abrirModal('X Galinha Salada','Frango, mussarela, milho, tomate, alface, batata e maionese.',22.00, true)"
+        >Adicionar</button>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="font-bold text-lg">21. Galinha Egg</h2>
+        <p class="text-sm">Frango, mussarela, ovo, milho, tomate, batata e maionese.</p>
+        <p class="text-right font-semibold mt-1">R$ 23,00</p>
+        <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+          onclick="abrirModal('Galinha Egg','Frango, mussarela, ovo, milho, tomate, batata e maionese.',23.00, true)"
+        >Adicionar</button>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="font-bold text-lg">22. Galinha Especial</h2>
+        <p class="text-sm">Frango, mussarela, presunto, tomate, milho, batata e maionese.</p>
+        <p class="text-right font-semibold mt-1">R$ 23,00</p>
+        <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+          onclick="abrirModal('Galinha Especial','Frango, mussarela, presunto, tomate, milho, batata e maionese.',23.00, true)"
+        >Adicionar</button>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="font-bold text-lg">23. Galinha Bacon</h2>
+        <p class="text-sm">Frango, bacon, mussarela, tomate, milho, batata e maionese.</p>
+        <p class="text-right font-semibold mt-1">R$ 23,00</p>
+        <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+        onclick="abrirModal('Galinha Bacon','Frango, bacon, mussarela, tomate, milho, batata e maionese.',23.00, true)"
+        >Adicionar</button>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="font-bold text-lg">24. Galinha Calabresa</h2>
+        <p class="text-sm">Frango, calabresa, mussarela, tomate, milho, batata e maionese.</p>
+        <p class="text-right font-semibold mt-1">R$ 23,00</p>
+        <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+          onclick="abrirModal('Galinha Calabresa','Frango, calabresa, mussarela, tomate, milho, batata e maionese.',23.00, true)"
+        >Adicionar</button>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="font-bold text-lg">25. Catupiry</h2>
+        <p class="text-sm">Frango, catupiry, milho, tomate, alface, batata e maionese.</p>
+        <p class="text-right font-semibold mt-1">R$ 24,00</p>
+        <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+          onclick="abrirModal('Catupiry','Frango, catupiry, milho, tomate, alface, batata e maionese.',24.00, true)"
+        >Adicionar</button>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="font-bold text-lg">26. Crok Rico</h2>
+        <p class="text-sm">Frango, catupiry, mussarela, presunto, tomate, milho, alface, batata e maionese.</p>
+        <p class="text-right font-semibold mt-1">R$ 26,00</p>
+        <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+          onclick="abrirModal('Crok Rico','Frango, catupiry, mussarela, presunto, tomate, milho, alface, batata e maionese.',26.00, true)"
+          >Adicionar</button>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="font-bold text-lg">27. X Calabresa</h2>
+        <p class="text-sm">Hambúrguer 90g, calabresa, mussarela, tomate, batata e maionese.</p>
+        <p class="text-right font-semibold mt-1">R$ 22,00</p>
+        <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+          onclick="abrirModal('X Calabresa','Hambúrguer 90g, calabresa, mussarela, tomate, batata e maionese.',22.00, true)"
+        >Adicionar</button>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="font-bold text-lg">28. Churrasco</h2>
+        <p class="text-sm">Contra filé, cebola, alface, tomate, mussarela, ovo, bacon e maionese.</p>
+        <p class="text-right font-semibold mt-1">R$ 29,00</p>
+        <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+          onclick="abrirModal('Churrasco','Contra filé, cebola, alface, tomate, mussarela, ovo, bacon e maionese.',29.00, true)"
+        >Adicionar</button>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="font-bold text-lg">29. X-Tudo</h2>
+        <p class="text-sm">Hambúrguer 90g, frango, bacon, calabresa, mussarela, presunto, ovo, alface, milho, tomate, batata e maionese.</p>
+        <p class="text-right font-semibold mt-1">R$ 29,00</p>
+        <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+          onclick="abrirModal('X-Tudo','Hambúrguer 90g, frango, bacon, calabresa, mussarela, presunto, ovo, alface, milho, tomate, batata e maionese.',29.00, true)"
+        >Adicionar</button>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="font-bold text-lg">30. Super Dougão</h2>
+        <p class="text-sm">2 Hambúrgueres 90g, frango, bacon, mussarela, presunto, 2 ovos, alface, milho, tomate, calabresa, catupiry, batata e maionese.</p>
+        <p class="text-right font-semibold mt-1">R$ 33,00</p>
+        <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
+          onclick="abrirModal('Super Dougão','2 Hambúrgueres 90g, frango, bacon, mussarela, presunto, 2 ovos, alface, milho, tomate, calabresa, catupiry, batata e maionese.',33.00, true)"
+        >Adicionar</button>
+      </div>
+      <button onclick="voltarAoTopo()" class="fixed bottom-4 right-4 bg-yellow-500 hover:bg-yellow-600 text-white p-3 rounded-full shadow-lg">
+      ↑ Topo
+    </button>
+      </section>
+
+
+      <!-- Seção: Combos -->
+      <section id="combos" class="p-4">
+        <h2 class="text-xl font-bold mb-4 text-center">🍔 🍔 🍔  Combos</h2>
+           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-white p-4 rounded shadow">
+                <h2 class="font-bold text-lg">3 X-Bacon</h2>
+                
+                <p class="text-right font-semibold mt-1">R$ 60,00</p>
+                <button 
+                    class="mt-2 bg-yellow-400 px-3 py-1 rounded" 
+                    onclick="abrirModal('3X-Bacon', '', 60.00, false)">
+                    Adicionar
+                </button>
+              </div>
+                <div class="bg-white p-4 rounded shadow">
+                <h2 class="font-bold text-lg">3 X-Salada</h2>
+                
+                <p class="text-right font-semibold mt-1">R$ 54,00</p>
+                <button 
+                    class="mt-2 bg-yellow-400 px-3 py-1 rounded" 
+                    onclick="abrirModal('3X-salada', '', 54.00, false)">
+                    Adicionar
+                </button>
+              </div>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                  <h2 class="font-bold text-lg">3 X-Galinha</h2>
+                
+                  <p class="text-right font-semibold mt-1">R$ 54,00</p>
+                  <button 
+                      class="mt-2 bg-yellow-400 px-3 py-1 rounded" 
+                      onclick="abrirModal('3X-Galinha', 'Ideal para dividie com os amigos', 60.00, false)">
+                      Adicionar
+                  </button>
+                </div>
+               </div>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                <h2 class="font-bold text-lg">3 X-Funkeiro</h2>
+               
+                <p class="text-right font-semibold mt-1">R$ 45,00</p>
+                <button 
+                    class="mt-2 bg-yellow-400 px-3 py-1 rounded" 
+                    onclick="abrirModal('3-X-Funqueiro', '', 45.00, false)">
+                    Adicionar
+                </button>
+              </div>
+           </div>
+      </section>
+
+           <!-- Seção: Bebidas -->
+      <section id="bebidas" class="p-4">
+        <h2 class="text-xl font-bold mb-4 text-center">🥤 Bebidas</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">Guaraná Mantiqueira (2 L)</h2>
+            <p class="text-right font-semibold mt-1">R$ 8,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded" onclick="abrirModal('Guaraná Mantiqueira (2 L)', '', 8.00, false)">Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">Guaraná Mantiqueira (500 ml)</h2>
+            <p class="text-right font-semibold mt-1">R$ 5,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded" onclick="abrirModal('Guaraná Mantiqueira (500 ml)', '', 5.00, false)">Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">Guaraná Mantiqueira (200 ml)</h2>
+            <p class="text-right font-semibold mt-1">R$ 3,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded" onclick="abrirModal('Guaraná Mantiqueira (200 ml)', '', 3.00, false)">Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">Coca-Cola (2 L)</h2>
+            <p class="text-right font-semibold mt-1">R$ 13,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded" onclick="abrirModal('Coca-Cola (2 L)', '', 13.00, false)">Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">Fanta (2 L)</h2>
+            <p class="text-right font-semibold mt-1">R$ 12,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded" onclick="abrirModal('Fanta (2 L)', '', 12.00, false)">Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">Coca e Fanta (600 ml)</h2>
+            <p class="text-right font-semibold mt-1">R$ 7,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded" onclick="abrirModal('Coca e Fanta (600 ml)', '', 7.00, false)">Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">Coca e Fanta (lata)</h2>
+            <p class="text-right font-semibold mt-1">R$ 5,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded" onclick="abrirModal('Coca e Fanta (lata)', '', 5.00, false)">Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">Coca-Cola (200 ml)</h2>
+            <p class="text-right font-semibold mt-1">R$ 3,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded" onclick="abrirModal('Coca-Cola (200 ml)', '', 3.00, false)">Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">Suco Dell Vale (lata)</h2>
+            <p class="text-right font-semibold mt-1">R$ 5,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded" onclick="abrirModal('Suco Dell Vale (lata)', '', 5.00, false)">Adicionar</button>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow">
+            <h2 class="font-bold text-lg">Água Mineral (500 ml)</h2>
+            <p class="text-right font-semibold mt-1">R$ 3,00</p>
+            <button class="mt-2 bg-yellow-400 px-3 py-1 rounded" onclick="abrirModal('Água Mineral (500 ml)', '', 3.00, false)">Adicionar</button>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="carrinho" class="p-4 bg-gray-100 mt-4 rounded"></section>
+
+    </main>
+      <dialog id="dialog-lanche" class="rounded p-4 w-[90%] max-w-md">
+        <h2 id="modal-nome" class="text-lg font-bold"></h2>
+        <p id="modal-descricao" class="text-sm mb-2"></p>
+        <p id="modal-preco" class="font-semibold mb-2"></p>
+
+        <label for="modal-quantidade" class="block">Quantidade:</label>
+        <input type="number" id="modal-quantidade" value="1" min="1" class="w-16 border px-1 mb-2">
+
+        <!-- Opcionais aparecem aqui via JS -->
+        <div id="modal-opcionais" class="mb-2 block"></div>
+
+        <div class="flex justify-end gap-2">
+          <button onclick="adicionarAoCarrinho()" class="bg-green-500 text-white px-3 py-1 rounded">Adicionar ao Carrinho</button>
+          <button onclick="fecharModal()" class="bg-red-500 px-3 py-1 rounded text-white">Cancelar</button>
+        </div>
+      </dialog>
+
+        
+     <script src="./index.js"></script>
+  </body>
+</html>  
+
+ 
