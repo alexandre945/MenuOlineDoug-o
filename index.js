@@ -208,10 +208,10 @@ function enviarPedido() {
     mensagem+= ` quantidade ${item.quantidade}%0A`;
 
     if (item.opcionais.length > 0) {
-      mensagem += ` - Adicionais: ${item.opcionais.join(', ')}%0A`;
+      mensagem += `  Adicionais: ${item.opcionais.join(', ')}%0A`;
     }
 
-    mensagem += `   - Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}%0A%0A`;
+    mensagem += `    Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}%0A%0A`;
   });
 
   // Tipo de pedido
@@ -253,7 +253,7 @@ function enviarPedido() {
   mensagem += `%0A*Total: R$ ${total.toFixed(2).replace('.', ',')}*`;
 
   // Número do seu WhatsApp com DDI + DDD + número (ex: 55 11 91234-5678 → 5511912345678)
-  const numeroLanchonete = '5535998464219'; 
+  const numeroLanchonete = '553588009835'; 
 
   const url = `https://wa.me/${numeroLanchonete}?text=${mensagem}`;
   window.open(url, '_blank');
