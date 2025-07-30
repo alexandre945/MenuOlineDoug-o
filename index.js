@@ -34,16 +34,20 @@ function abrirModal(nome, descricao, preco, exibirOpcionais = true) {
   // Atualiza o preço total exibido ao mudar a quantidade ou opcionais
   function atualizarPrecoTotal() {
     let quantidade = parseInt(document.getElementById('modal-quantidade').value) || 1;
-    let total = preco;
-
+    
+    let totalLanches = preco * quantidade;
+    let totalAdicionais = 0;
+  
     const checkboxes = container.querySelectorAll('input[type=checkbox]:checked');
     checkboxes.forEach(cb => {
-      total += parseFloat(cb.dataset.preco);
+      totalAdicionais += parseFloat(cb.dataset.preco);
     });
-
-    total *= quantidade;
-
+  
+    let total = totalLanches + totalAdicionais;
+  
     document.getElementById('modal-preco').textContent = `R$ ${total.toFixed(2)}`;
+    document.getElementById('modal-preco').dataset.precoBase = preco.toFixed(2);
+
   }
 
   document.getElementById('modal-quantidade').addEventListener('input', atualizarPrecoTotal);
@@ -63,37 +67,40 @@ function fecharModal() {
 }
 
 //adicionar ao carrinho 
+function adicionarAoCarrinho() {
+  const nome = document.getElementById('modal-nome').textContent;
+  const descricao = document.getElementById('modal-descricao').textContent;
+  const precoBase = parseFloat(document.getElementById('modal-preco').dataset.precoBase);
+  const quantidade = parseInt(document.getElementById('modal-quantidade').value);
 
-  function adicionarAoCarrinho() {
-    const nome = document.getElementById('modal-nome').textContent;
-    const descricao = document.getElementById('modal-descricao').textContent;
-    const preco = parseFloat(document.getElementById('modal-preco').textContent.replace('R$', '').trim());
-    const quantidade = parseInt(document.getElementById('modal-quantidade').value);
+  // Captura os opcionais marcados
+  const opcionais = [];
+  let precoAdicionais = 0;
+  document.querySelectorAll('#modal-opcionais input[type="checkbox"]:checked').forEach(checkbox => {
+    opcionais.push(checkbox.value);
+    precoAdicionais += parseFloat(checkbox.dataset.preco);
+  });
 
-    // Captura os opcionais marcados (se houver)
-    const opcionais = [];
-    document.querySelectorAll('#modal-opcionais input[type="checkbox"]:checked').forEach(checkbox => {
-      opcionais.push(checkbox.value);
-    });
+  const item = {
+    nome,
+    descricao,
+    precoBase,
+    precoAdicionais,
+    quantidade,
+    opcionais
+  };
 
-    const item = {
-      nome,
-      descricao,
-      preco,
-      quantidade,
-      opcionais
-    };
+  let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  carrinho.push(item);
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
 
-    // Pega o carrinho atual do localStorage ou cria um novo
-    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-    carrinho.push(item);
-    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+  exibirCarrinho();
+  document.getElementById('carrinho').scrollIntoView({ behavior: 'smooth' });
+  alert('Item adicionado ao carrinho!');
+  fecharModal();
+}
 
-    exibirCarrinho()
-    document.getElementById('carrinho').scrollIntoView({ behavior: 'smooth' });
-    alert('Item adicionado ao carrinho!');
-    fecharModal();
-  }
+
 
   //exibir o carrinho 
     function exibirCarrinho() {
@@ -113,7 +120,8 @@ function fecharModal() {
   let total = 0;
 
   carrinho.forEach((item, index) => {
-    const subtotal = item.preco * item.quantidade;
+
+    const subtotal = (item.precoBase * item.quantidade) + item.precoAdicionais;
     total += subtotal;
     html += `
       <div class="mb-2 p-2 bg-white rounded shadow">
@@ -150,6 +158,10 @@ function fecharModal() {
       <label class="block mt-2">Número: <input type="text" id="numero" class="border p-1 w-full"></label>
       <label class="block mt-2">Referência: <input type="text" id="referencia" class="border p-1 w-full"></label>
     </div>
+    <div class="mt-4">
+    <label class="block mt-2">Observação:</label>
+    <textarea id="observacao" class="border p-1 w-full rounded" placeholder="Ex: sem cebola, troco para 100..."></textarea>
+    </div>
   `;
 
   // 🔸 Soma a taxa de entrega se estiver selecionado
@@ -162,8 +174,6 @@ function fecharModal() {
 
   container.innerHTML = html;
 }
-
-
 
   function removerDoCarrinho(index) {
     let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
@@ -200,24 +210,25 @@ function enviarPedido() {
   let total = 0;
 
   carrinho.forEach(item => {
-    const subtotal = item.preco * item.quantidade;
+    const subtotal = (item.precoBase * item.quantidade) + item.precoAdicionais;
     total += subtotal;
-
+  
     mensagem += ` ${item.nome}%0A`;
-
-    mensagem+= ` quantidade ${item.quantidade}%0A`;
-
+    mensagem += ` quantidade ${item.quantidade}%0A`;
+    mensagem += ` observação ${item.observation || ''}%0A`;
+  
     if (item.opcionais.length > 0) {
       mensagem += `  Adicionais: ${item.opcionais.join(', ')}%0A`;
     }
-
-    mensagem += `    Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}%0A%0A`;
+  
+    mensagem += `  Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}%0A%0A`;
   });
+  
 
   // Tipo de pedido
   const tipoPedido = document.querySelector('input[name="tipoPedido"]:checked').value;
   mensagem += `*Tipo de Pedido:* ${tipoPedido === 'entrega' ? 'Entrega' : 'Retirar na lanchonete'}%0A`;
-
+  const observacao = document.getElementById('observacao')?.value || '';
   if (tipoPedido === 'entrega') {
     total += 7;
 
@@ -227,19 +238,24 @@ function enviarPedido() {
     const rua = document.getElementById('rua').value;
     const numero = document.getElementById('numero').value;
     const referencia = document.getElementById('referencia').value;
+    
 
-    if (!nome || !zap || !bairro || !rua || !numero) {
+
+    if (!nome || !zap || !observation || !bairro || !rua || !numero) {
       alert('Preencha todos os campos de entrega.');
       return;
     }
 
     mensagem += `*Nome:* ${nome}%0A`;
     mensagem += `*WhatsApp:* ${zap}%0A`;
+    mensagem += `\n📝 Observação: ${observacao}`;
+
     mensagem += `*Endereço:* Rua ${rua}, nº ${numero}, Bairro ${bairro}%0A`;
     if (referencia) mensagem += `*Referência:* ${referencia}%0A`;
   } else {
     const nome = document.getElementById('nomeCliente').value;
     const zap = document.getElementById('zapCliente').value;
+    
 
     if (!nome || !zap) {
       alert('Preencha nome e WhatsApp.');
@@ -248,12 +264,13 @@ function enviarPedido() {
 
     mensagem += `*Nome:* ${nome}%0A`;
     mensagem += `*WhatsApp:* ${zap}%0A`;
+    mensagem += `\n📝 Observação: ${observacao}%0A`;
   }
 
   mensagem += `%0A*Total: R$ ${total.toFixed(2).replace('.', ',')}*`;
 
   // Número do seu WhatsApp com DDI + DDD + número (ex: 55 11 91234-5678 → 5511912345678)
-  const numeroLanchonete = '553588009835'; 
+  const numeroLanchonete = '5535999810371'; 
 
   const url = `https://wa.me/${numeroLanchonete}?text=${mensagem}`;
   window.open(url, '_blank');
