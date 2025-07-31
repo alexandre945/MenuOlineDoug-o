@@ -270,7 +270,7 @@ function enviarPedido() {
   mensagem += `%0A*Total: R$ ${total.toFixed(2).replace('.', ',')}*`;
 
   // Número do seu WhatsApp com DDI + DDD + número (ex: 55 11 91234-5678 → 5511912345678)
-  const numeroLanchonete = '5535998464219'; 
+  const numeroLanchonete = '5535999810371'; 
 
   const url = `https://wa.me/${numeroLanchonete}?text=${mensagem}`;
   window.open(url, '_blank');
