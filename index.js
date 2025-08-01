@@ -25,7 +25,8 @@ function abrirModal(nome, descricao, preco, exibirOpcionais = true) {
 
   if (exibirOpcionais) {
     container.style.display = 'block'; // Mostra opcionais
-    const opcionais = ['Ovo', 'Bacon', 'Cheddar', 'Batata Palha', 'Catupiry', 'Calabresa', 'Hamburguer 90g', 'Hamburguer 56g', 'Frango'];
+ 
+    const opcionais = ['Ovo', 'Bacon', 'Cheddar', 'Batata Palha', 'Catupiry', 'Calabresa', 'Hamburguer 90g', 'Hamburguer 56g', 'Frango', 'Presunto', 'Mussarela', 'catchup sachê unid', 'Milho verde'];
     opcionais.forEach(opcional => {
       const precoOpcional = precosOpcionais[opcional] || 0;
       const div = document.createElement('div');
