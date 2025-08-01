@@ -17,7 +17,7 @@ function abrirModal(nome, descricao, preco, exibirOpcionais = true) {
     'Milho verde': 2.00,
    'Hamburguer 90g': 7.00,
    'Hamburguer 56g': 5.00,
-    'Batata Palha': 1.50
+    'Batata Palha':2.00,
   };
 
   const container = document.getElementById('modal-opcionais');
