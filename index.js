@@ -5,9 +5,18 @@ function abrirModal(nome, descricao, preco, exibirOpcionais = true) {
   document.getElementById('modal-quantidade').value = 1;
 
   const precosOpcionais = {
-    Ovo: 2.50,
-    Bacon: 3.00,
-    Cheddar: 2.00,
+    Ovo: 2.00,
+    Bacon: 7.00,
+    Cheddar: 4.00,
+    Catupiry: 4.00,
+    Frango: 5.00,
+    Calabresa: 7.00,
+    Presunto: 2.00,
+    Mussarela: 3.00,
+    'catchup sachê unid': 1.00, 
+    'Milho verde': 2.00,
+   'Hamburguer 90g': 7.00,
+   'Hamburguer 56g': 5.00,
     'Batata Palha': 1.50
   };
 
@@ -16,7 +25,7 @@ function abrirModal(nome, descricao, preco, exibirOpcionais = true) {
 
   if (exibirOpcionais) {
     container.style.display = 'block'; // Mostra opcionais
-    const opcionais = ['Ovo', 'Bacon', 'Cheddar', 'Batata Palha'];
+    const opcionais = ['Ovo', 'Bacon', 'Cheddar', 'Batata Palha', 'Catupiry', 'Calabresa', 'Hamburguer 90g', 'Hamburguer 56g', 'Frango'];
     opcionais.forEach(opcional => {
       const precoOpcional = precosOpcionais[opcional] || 0;
       const div = document.createElement('div');
