@@ -21,16 +21,16 @@
 
     <header class="sticky top-0 z-10 bg-yellow-400 shadow p-4 flex flex-col gap-2">
         <div class="max-w-4xl mx-auto flex items-center justify-between">
-          <h1 class="font-bold text-3xl text-center ">🍔 Dougão Lanches</h1>
-          <img class="w-16 rounded" src="./image/logo.png" alt="Logo Dougão">
+          <p class="text-3xl pr-2" >🍔</p> <h1 class="font-bold text-3xl text-center text-red-500"> Dougão Lanches</h1>
+          <img class="w-16 h-16 object-cover rounded-full border-2 border-white shadow" src="./image/logo.png" src="./image/logo.png" alt="Logo Dougão">
          
         </div>
       
         <nav class="flex justify-center gap-2 my-4">
-          <button onclick="mudarPagina('lanches')" class="px-3 py-1 text-sm rounded border border-gray-300 bg-white shadow hover:bg-yellow-300 hover:text-black transition">Lanches</button>
-          <button onclick="mudarPagina('combos')" class="px-3 py-1 text-sm rounded border border-gray-300 bg-white shadow hover:bg-yellow-300 hover:text-black transition">Combos</button>
-          <button onclick="mudarPagina('bebidas')" class="px-3 py-1 text-sm rounded border border-gray-300 bg-white shadow hover:bg-yellow-300 hover:text-black transition">Bebidas</button>
-          <button onclick="mudarPagina('bomboniere')" class="px-3 py-1 text-sm rounded border border-gray-300 bg-white shadow hover:bg-yellow-300 hover:text-black transition">Bomboniere</button>
+          <button onclick="mudarPagina('lanches')" class="px-3 py-1 text-sm rounded border border-black bg-green-300  hover:bg-yellow-300 hover:text-black transition">Lanches</button>
+          <button onclick="mudarPagina('combos')" class="px-3 py-1 text-sm rounded border border-black bg-green-300 shadow hover:bg-yellow-300 hover:text-black transition">Combos</button>
+          <button onclick="mudarPagina('bebidas')" class="px-3 py-1 text-sm rounded border border-black bg-green-300 shadow hover:bg-yellow-300 hover:text-black transition">Bebidas</button>
+          <button onclick="mudarPagina('bomboniere')" class="px-3 py-1 text-sm rounded border border-black bg-green-300 shadow hover:bg-yellow-300 hover:text-black transition">Bomboniere</button>
         </nav>
         <div class="text-center text-sm">
           <p>Horarío de funcionamento das 19:00h a 24:00h <br> de Terça a Domingo </p>
@@ -48,7 +48,7 @@
           
           <div class="bg-white p-4 rounded shadow space-between">
             <h2 class="font-bold text-lg">01. Misto</h2>
-            <p class="text-sm">Presunto, mussarela e maionese.</p>
+            <p class="text-sm font-bold">Presunto, mussarela e maionese.</p>
             <p class="text-right font-semibold text-green-500">R$ 17,00</p>
             <button 
                 class="mt-2 bg-yellow-400 px-3 py-1 rounded" 
@@ -59,7 +59,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">02. Hambúrger</h2>
-            <p class="text-sm">Hambúrguer 90g, tomate e maionese.</p>
+            <p class="text-sm font-bold">Hambúrguer 90g, tomate e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 17,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
             onclick="abrirModal('Hambúguer','Hambúrer 90gr tomate e maionese',17.00, true)"
@@ -68,7 +68,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">03. X-Funkeiro</h2>
-            <p class="text-sm">Hambúrguer 56g, mussarela, presunto, milho, alface, tomate, batata e maionese.</p>
+            <p class="text-sm font-bold">Hambúrguer 56g, mussarela, presunto, milho, alface, tomate, batata e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 18,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
               onclick="abrirModal('X-Funkeiro','Hambúrguer 56g, mussarela, presunto, milho, alface, tomate, batata e maionese',18.00, true )"
@@ -78,7 +78,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">04. X-Burguer</h2>
-            <p class="text-sm">Hambúrguer 90g, mussarela, tomate e maionese.</p>
+            <p class="text-sm font-bold">Hambúrguer 90g, mussarela, tomate e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 19,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
               onclick="abrirModal('X-Burguer','Hambúrguer 90g, mussarela, tomate e maionese.',19.00, true)"
@@ -88,7 +88,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">05. X-Salada</h2>
-            <p class="text-sm">Hambúrguer 90g, mussarela, alface, tomate, milho, batata e maionese.</p>
+            <p class="text-sm font-bold">Hambúrguer 90g, mussarela, alface, tomate, milho, batata e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 21,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
               onclick="abrirModal('X-Salada Completo','Hambúrguer 90g, mussarela, alface, tomate, milho, batata e maionese',21.00, true)"
@@ -97,7 +97,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">06. X-Egg</h2>
-            <p class="text-sm">Hambúrguer 90g, mussarela, tomate, ovo, batata e maionese.</p>
+            <p class="text-sm font-bold">Hambúrguer 90g, mussarela, tomate, ovo, batata e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 21,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
               onclick="abrirModal('X-Egg','Hambúrguer 90g, mussarela, tomate, ovo, batata e maionese.',21.00, true)"
@@ -106,7 +106,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">07. X Egg Salada</h2>
-            <p class="text-sm">Hambúrguer 90g, mussarela, tomate, alface, ovo, milho, batata e maionese.</p>
+            <p class="text-sm font-bold">Hambúrguer 90g, mussarela, tomate, alface, ovo, milho, batata e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 22,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
               onclick="abrirModal('Egg Salada','Hambúrguer 90g, mussarela, tomate, alface, ovo, milho, batata e maionese.',22.00, true)"
@@ -115,7 +115,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">08. X Bacon</h2>
-            <p class="text-sm">Hambúrguer 90g, mussarela, bacon, tomate, batata e maionese.</p>
+            <p class="text-sm font-bold">Hambúrguer 90g, mussarela, bacon, tomate, batata e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 23,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
               onclick="abrirModal('X Bacon','Hambúrguer 90g, mussarela, bacon, tomate, batata e maionese.',23.00, true)"
@@ -124,7 +124,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">09. X Bacon Salada</h2>
-            <p class="text-sm">Hambúrguer 90g, mussarela, bacon, alface, tomate, milho, batata e maionese.</p>
+            <p class="text-sm font-bold">Hambúrguer 90g, mussarela, bacon, alface, tomate, milho, batata e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 24,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
               onclick="abrirModal('X Bacon Salada','Hambúrguer 90g, mussarela, bacon, alface, tomate, milho, batata e maionese.',24.00, true)"
@@ -133,7 +133,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">10. X Egg Bacon Salada</h2>
-            <p class="text-sm">Hambúrguer 90g, mussarela, bacon, ovo, alface, tomate, milho, batata e maionese.</p>
+            <p class="text-sm font-bold">Hambúrguer 90g, mussarela, bacon, ovo, alface, tomate, milho, batata e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 25,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
               onclick="abrirModal('X Egg Bacon Salada','Hambúrguer 90g, mussarela, bacon, ovo, alface, tomate, milho, batata e maionese.',25.00, true)"
@@ -142,7 +142,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">11. X Egg Bacon</h2>
-            <p class="text-sm">Hambúrguer 90g, mussarela, bacon, ovo, tomate, batata e maionese.</p>
+            <p class="text-sm font-bold">Hambúrguer 90g, mussarela, bacon, ovo, tomate, batata e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 24,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
             onclick="abrirModal('X Egg Bacon','Hambúrguer 90g, mussarela, bacon, ovo, tomate, batata e maionese.',24.00, true)"
@@ -151,7 +151,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">12. Especial</h2>
-            <p class="text-sm">Hambúrguer 90g, mussarela, presunto, tomate, milho, batata e maionese.</p>
+            <p class="text-sm font-bold">Hambúrguer 90g, mussarela, presunto, tomate, milho, batata e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 23,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
             onclick="abrirModal('Especial','Hambúrguer 90g, mussarela, presunto, tomate, milho, batata e maionese.',23.00, true)"
@@ -160,7 +160,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">13. Sanduba</h2>
-            <p class="text-sm">Hambúrguer 90g, mussarela, presunto, tomate, milho, ovo, alface, batata e maionese.</p>
+            <p class="text-sm font-bold">Hambúrguer 90g, mussarela, presunto, tomate, milho, ovo, alface, batata e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 24,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
             onclick="abrirModal('Sanduba','Hambúrguer 90g, mussarela, presunto, tomate, milho, ovo, alface, batata e maionese.',24.00, true)"
@@ -169,7 +169,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">14. Crok</h2>
-            <p class="text-sm">Hambúrguer 90g, mussarela, bacon, tomate, milho, batata e maionese.</p>
+            <p class="text-sm font-bold">Hambúrguer 90g, mussarela, bacon, tomate, milho, batata e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 24,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
               onclick="abrirModal('Crok','Hambúrguer 90g, mussarela, bacon, tomate, milho, batata e maionese.',24.00, true)"
@@ -178,7 +178,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">15. Esperto</h2>
-            <p class="text-sm">Hambúrguer 90g, mussarela, presunto, catupiry, alface, tomate, batata e maionese.</p>
+            <p class="text-sm font-bold">Hambúrguer 90g, mussarela, presunto, catupiry, alface, tomate, batata e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 27,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
               onclick="abrirModal('Esperto','Hambúrguer 90g, mussarela, presunto, catupiry, alface, tomate, batata e maionese.',27.00, true)"
@@ -188,7 +188,7 @@
         
             <div class="bg-white p-4 rounded shadow">
               <h2 class="font-bold text-lg">16. Bauru</h2>
-              <p class="text-sm">Presunto, mussarela, tomate, batata e maionese.</p>
+              <p class="text-sm font-bold">Presunto, mussarela, tomate, batata e maionese.</p>
               <p class="text-right font-semibold mt-1 text-green-500">R$ 19,00</p>
               <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
                 onclick="abrirModal('Bauru','Presunto, mussarela, tomate, batata e maionese.',19.00, true)"
@@ -197,7 +197,7 @@
 
             <div class="bg-white p-4 rounded shadow">
               <h2 class="font-bold text-lg">17. Prensado</h2>
-              <p class="text-sm">Presunto, mussarela, milho, tomate, batata e maionese.</p>
+              <p class="text-sm font-bold">Presunto, mussarela, milho, tomate, batata e maionese.</p>
               <p class="text-right font-semibold mt-1 text-green-500">R$ 20,00</p>
               <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
                 onclick="abrirModal('Prensado','Presunto, mussarela, milho, tomate, batata e maionese.',20.00, true)"
@@ -206,7 +206,7 @@
 
             <div class="bg-white p-4 rounded shadow">
               <h2 class="font-bold text-lg">18. Americano</h2>
-              <p class="text-sm">Presunto, mussarela, ovo, tomate, milho, alface, batata e maionese.</p>
+              <p class="text-sm font-bold">Presunto, mussarela, ovo, tomate, milho, alface, batata e maionese.</p>
               <p class="text-right font-semibold mt-1 text-green-500">R$ 22,00</p>
               <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
                 onclick="abrirModal('Americano','Presunto, mussarela, ovo, tomate, milho, alface, batata e maionese.',22.00, true)"
@@ -215,7 +215,7 @@
 
             <div class="bg-white p-4 rounded shadow">
               <h2 class="font-bold text-lg">19. Vegetariano</h2>
-              <p class="text-sm">Mussarela, ovo, alface, milho, tomate, batata e maionese.</p>
+              <p class="text-sm font-bold">Mussarela, ovo, alface, milho, tomate, batata e maionese.</p>
               <p class="text-right font-semibold mt-1 text-green-500">R$ 19,00</p>
               <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
                 onclick="abrirModal('Vegetariano','Mussarela, ovo, alface, milho, tomate, batata e maionese.',19.00, true)"
@@ -224,7 +224,7 @@
 
             <div class="bg-white p-4 rounded shadow">
               <h2 class="font-bold text-lg">20. X Galinha Salada</h2>
-              <p class="text-sm">Frango, mussarela, milho, tomate, alface, batata e maionese.</p>
+              <p class="text-sm font-bold">Frango, mussarela, milho, tomate, alface, batata e maionese.</p>
               <p class="text-right font-semibold mt-1 text-green-500">R$ 23,00</p>
               <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
                 onclick="abrirModal('X Galinha Salada','Frango, mussarela, milho, tomate, alface, batata e maionese.',23.00, true)"
@@ -233,7 +233,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">21. Galinha Egg</h2>
-            <p class="text-sm">Frango, mussarela, ovo, milho, tomate, batata e maionese.</p>
+            <p class="text-sm font-bold">Frango, mussarela, ovo, milho, tomate, batata e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 24,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
               onclick="abrirModal('Galinha Egg','Frango, mussarela, ovo, milho, tomate, batata e maionese.',24.00, true)"
@@ -242,7 +242,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">22. Galinha Especial</h2>
-            <p class="text-sm">Frango, mussarela, presunto, tomate, milho, batata e maionese.</p>
+            <p class="text-sm font-bold">Frango, mussarela, presunto, tomate, milho, batata e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 24,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
               onclick="abrirModal('Galinha Especial','Frango, mussarela, presunto, tomate, milho, batata e maionese.',24.00, true)"
@@ -251,7 +251,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">23. Galinha Bacon</h2>
-            <p class="text-sm">Frango, bacon, mussarela, tomate, milho, batata e maionese.</p>
+            <p class="text-sm font-bold">Frango, bacon, mussarela, tomate, milho, batata e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 24,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
             onclick="abrirModal('Galinha Bacon','Frango, bacon, mussarela, tomate, milho, batata e maionese.',24.00, true)"
@@ -260,7 +260,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">24. Galinha Calabresa</h2>
-            <p class="text-sm">Frango, calabresa, mussarela, tomate, milho, batata e maionese.</p>
+            <p class="text-sm font-bold">Frango, calabresa, mussarela, tomate, milho, batata e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 24,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
               onclick="abrirModal('Galinha Calabresa','Frango, calabresa, mussarela, tomate, milho, batata e maionese.',24.00, true)"
@@ -269,7 +269,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">25. Catupiry</h2>
-            <p class="text-sm">Frango, catupiry, milho, tomate, alface, batata e maionese.</p>
+            <p class="text-sm font-bold">Frango, catupiry, milho, tomate, alface, batata e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 25,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
               onclick="abrirModal('Catupiry','Frango, catupiry, milho, tomate, alface, batata e maionese.',25.00, true)"
@@ -278,7 +278,7 @@
 
           <div class="bg-white p-4 rounded shadow">
               <h2 class="font-bold text-lg">26. Crok Rico</h2>
-              <p class="text-sm">Frango, catupiry, mussarela, presunto, tomate, milho, alface, batata e maionese.</p>
+              <p class="text-sm font-bold">Frango, catupiry, mussarela, presunto, tomate, milho, alface, batata e maionese.</p>
               <p class="text-right font-semibold mt-1 text-green-500">R$ 28,00</p>
               <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
                 onclick="abrirModal('Crok Rico','Frango, catupiry, mussarela, presunto, tomate, milho, alface, batata e maionese.',28.00, true)"
@@ -287,7 +287,7 @@
 
             <div class="bg-white p-4 rounded shadow">
               <h2 class="font-bold text-lg">27. X Calabresa</h2>
-              <p class="text-sm">Hambúrguer 90g, calabresa, mussarela, tomate, batata e maionese.</p>
+              <p class="text-sm font-bold">Hambúrguer 90g, calabresa, mussarela, tomate, batata e maionese.</p>
               <p class="text-right font-semibold mt-1 text-green-500">R$ 23,00</p>
               <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
                 onclick="abrirModal('X Calabresa','Hambúrguer 90g, calabresa, mussarela, tomate, batata e maionese.',23.00, true)"
@@ -296,7 +296,7 @@
 
           <div class="bg-white p-4 rounded shadow">
             <h2 class="font-bold text-lg">28. Churrasco</h2>
-            <p class="text-sm">Contra filé, cebola, alface, tomate, mussarela, ovo, bacon e maionese.</p>
+            <p class="text-sm font-bold">Contra filé, cebola, alface, tomate, mussarela, ovo, bacon e maionese.</p>
             <p class="text-right font-semibold mt-1 text-green-500">R$ 30,00</p>
             <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
               onclick="abrirModal('Churrasco','Contra filé, cebola, alface, tomate, mussarela, ovo, bacon e maionese.',30.00, true)"
@@ -305,7 +305,7 @@
 
         <div class="bg-white p-4 rounded shadow">
           <h2 class="font-bold text-lg">29. X-Tudo</h2>
-          <p class="text-sm">Hambúrguer 90g, frango, bacon, calabresa, mussarela, presunto, ovo, alface, milho, tomate, batata e maionese.</p>
+          <p class="text-sm font-bold">Hambúrguer 90g, frango, bacon, calabresa, mussarela, presunto, ovo, alface, milho, tomate, batata e maionese.</p>
           <p class="text-right font-semibold mt-1 text-green-500">R$ 30,00</p>
           <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
             onclick="abrirModal('X-Tudo','Hambúrguer 90g, frango, bacon, calabresa, mussarela, presunto, ovo, alface, milho, tomate, batata e maionese.',30.00, true)"
@@ -314,7 +314,7 @@
 
         <div class="bg-white p-4 rounded shadow">
           <h2 class="font-bold text-lg">30. Super Dougão</h2>
-          <p class="text-sm">2 Hambúrgueres 90g, frango, bacon, mussarela, presunto, 2 ovos, alface, milho, tomate, calabresa, catupiry, batata e maionese.</p>
+          <p class="text-sm font-bold">2 Hambúrgueres 90g, frango, bacon, mussarela, presunto, 2 ovos, alface, milho, tomate, calabresa, catupiry, batata e maionese.</p>
           <p class="text-right font-semibold mt-1 text-green-500">R$ 35,00</p>
           <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
             onclick="abrirModal('Super Dougão','2 Hambúrgueres 90g, frango, bacon, mussarela, presunto, 2 ovos, alface, milho, tomate, calabresa, catupiry, batata e maionese.',35.00, true)"
@@ -322,7 +322,7 @@
         </div>
 
         <div class="bg-white p-4 rounded shadow">
-          <h2 class="font-bold text-lg">31. Maionese da casa</h2>
+          <h2 class="font-bold text-lg font-bold">31. Maionese da casa</h2>
           <p class="text-right font-semibold mt-1 text-green-500">R$ 2,00</p>
           <button class="mt-2 bg-yellow-400 px-3 py-1 rounded"
             onclick="abrirModal('Maionese da casa','',2.00, false)"
