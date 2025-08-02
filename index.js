@@ -14,10 +14,10 @@ function abrirModal(nome, descricao, preco, exibirOpcionais = true) {
     Presunto: 2.00,
     Mussarela: 3.00,
     Cebola: 2.00,
-    'catchup sachê unid': 1.00, 
+    'catchup sachê 3unid': 1.00, 
     'Milho verde': 2.00,
-   'Hamburguer 90g': 7.00,
-   'Hamburguer 56g': 5.00,
+   'Hambúrguer 90g': 7.00,
+   'Hambúrguer 56g': 5.00,
     'Batata Palha':2.00,
   };
 
@@ -27,7 +27,7 @@ function abrirModal(nome, descricao, preco, exibirOpcionais = true) {
   if (exibirOpcionais) {
     container.style.display = 'block'; // Mostra opcionais
  
-    const opcionais = ['Ovo', 'Bacon', 'Cheddar', 'Batata Palha', 'Catupiry', 'Calabresa', 'Hamburguer 90g', 'Hamburguer 56g', 'Frango', 'Presunto', 'Mussarela', 'catchup sachê unid', 'Milho verde', 'Cebola'];
+    const opcionais = ['Ovo', 'Bacon', 'Cheddar', 'Batata Palha', 'Catupiry', 'Calabresa', 'Hambúrguer 90g', 'Hambúrguer 56g', 'Frango', 'Presunto', 'Mussarela', 'catchup sachê 3unid', 'Milho verde', 'Cebola'];
     opcionais.forEach(opcional => {
       const precoOpcional = precosOpcionais[opcional] || 0;
       const div = document.createElement('div');
@@ -290,3 +290,26 @@ function enviarPedido() {
   localStorage.removeItem('carrinho');
   exibirCarrinho();
 }
+function verificarStatusLoja() {
+  const agora = new Date();
+  const diaSemana = agora.getDay(); // 0 = domingo, 1 = segunda, ..., 6 = sábado
+  const hora = agora.getHours();
+
+  const statusTexto = document.getElementById("statusTexto");
+
+  if (diaSemana === 1) {
+    // Segunda-feira
+    statusTexto.textContent = "❌ Fechado. Abriremos amanhã às 19h.";
+    statusTexto.className = "text-sm text-red-600";
+  } else if (hora >= 19 && hora < 24) {
+    // Dentro do horário de funcionamento
+    statusTexto.textContent = "✅ Estamos abertos!";
+    statusTexto.className = "text-sm text-green-600";
+  } else {
+    // Fora do horário
+    statusTexto.textContent = "❌ Fechado. Abrimos hoje às 19h.";
+    statusTexto.className = "text-sm text-red-600";
+  }
+}
+
+verificarStatusLoja();
