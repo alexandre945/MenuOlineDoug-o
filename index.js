@@ -127,6 +127,7 @@ function adicionarAoCarrinho() {
   const tipoSelecionadoAnterior = document.querySelector('input[name="tipoPedido"]:checked');
   const tipoPedidoValor = tipoSelecionadoAnterior ? tipoSelecionadoAnterior.value : 'retirar';
 
+
   let html = '<h3 class="text-lg font-bold mb-2 text-center">Carrinho</h3>';
   let total = 0;
 
@@ -174,6 +175,36 @@ function adicionarAoCarrinho() {
     <textarea id="observacao" class="border p-1 w-full rounded" placeholder="Ex: sem cebola, troco para 100..."></textarea>
     </div>
   `;
+  //tipo de pagamento
+    html += `
+  <div class="mt-4">
+    <label class="block font-bold mb-1">Forma de Pagamento:</label>
+    <label>
+      <input type="radio" name="formaPagamento" value="dinheiro" onchange="togglePagamento()"> Dinheiro
+    </label><br>
+    <label>
+      <input type="radio" name="formaPagamento" value="cartao" onchange="togglePagamento()"> Cartão
+    </label>
+  </div>
+
+  <div id="campoTroco" class="mt-2 hidden">
+    <label>Troco para quanto?
+      <input type="text" id="valorTroco" class="border p-1 w-full" placeholder="Ex: 100,00">
+    </label>
+  </div>
+
+  <div id="campoCartao" class="mt-2 hidden">
+    <label>Tipo de cartão:
+      <select id="tipoCartao" class="border p-1 w-full">
+        <option value="credito">Crédito</option>
+        <option value="debito">Débito</option>
+        <option value="pix_maquina">Pix na maquina</option>
+      </select>
+    </label>
+  </div>
+`;
+
+
 
   // 🔸 Soma a taxa de entrega se estiver selecionado
   if (tipoPedidoValor === 'entrega') {
@@ -195,6 +226,24 @@ function adicionarAoCarrinho() {
 
   // Exibir carrinho ao carregar a página
   window.onload = exibirCarrinho;
+
+  function togglePagamento() {
+  const pagamentoSelecionado = document.querySelector('input[name="formaPagamento"]:checked')?.value;
+  const campoTroco = document.getElementById('campoTroco');
+  const campoCartao = document.getElementById('campoCartao');
+
+  if (pagamentoSelecionado === 'dinheiro') {
+    campoTroco.classList.remove('hidden');
+    campoCartao.classList.add('hidden');
+  } else if (pagamentoSelecionado === 'cartao') {
+    campoCartao.classList.remove('hidden');
+    campoTroco.classList.add('hidden');
+  } else {
+    campoTroco.classList.add('hidden');
+    campoCartao.classList.add('hidden');
+  }
+}
+
 
   function toggleEntrega() {
   const tipo = document.querySelector('input[name="tipoPedido"]:checked').value;
@@ -277,11 +326,23 @@ function enviarPedido() {
     mensagem += `*WhatsApp:* ${zap}%0A`;
     mensagem += `\n📝 Observação: ${observacao}%0A`;
   }
+  const formaPagamento = document.querySelector('input[name="formaPagamento"]:checked')?.value || '';
+let pagamentoTexto = '';
+
+if (formaPagamento === 'dinheiro') {
+  const valorTroco = document.getElementById('valorTroco').value;
+  pagamentoTexto = `Dinheiro (troco para R$ ${valorTroco})`;
+} else if (formaPagamento === 'cartao') {
+  const tipoCartao = document.getElementById('tipoCartao').value;
+  pagamentoTexto = `Cartão (${tipoCartao})`;
+}
+mensagem += `*Forma de Pagamento:* ${pagamentoTexto}%0A`;
+
 
   mensagem += `%0A*Total: R$ ${total.toFixed(2).replace('.', ',')}*`;
-
+// 5535999810371
   // Número do seu WhatsApp com DDI + DDD + número (ex: 55 11 91234-5678 → 5511912345678)
-  const numeroLanchonete = '5535999810371'; 
+  const numeroLanchonete = '5535999810371'; // Substitua pelo seu número real
 
   const url = `https://wa.me/${numeroLanchonete}?text=${mensagem}`;
   window.open(url, '_blank');
