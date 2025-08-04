@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Imprimir Pedido - DOUGÃO LANCHES</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 1rem;
+      color: #222;
+    }
+    h1 {
+      color: #d32f2f;
+      text-align: center;
+    }
+    .pedido {
+      max-width: 400px;
+      margin: 0 auto;
+      border: 2px solid #d32f2f;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    .item {
+      margin-bottom: 0.5rem;
+    }
+    .item-nome {
+      font-weight: bold;
+    }
+    .adicionais {
+      margin-left: 1rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .total {
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      text-align: right;
+      border-top: 1px solid #d32f2f;
+      padding-top: 0.5rem;
+    }
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: #777;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pedido DOUGÃO LANCHES</h1>
+  <div class="pedido" id="pedido"></div>
+
+  <script>
+    // Função para pegar parâmetro da URL
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // Decodifica base64 para string normal
+    function base64Decode(str) {
+      try {
+        return decodeURIComponent(atob(str).split('').map(function(c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function mostrarPedido(pedido) {
+      const container = document.getElementById('pedido');
+      if (!pedido) {
+        container.innerHTML = '<p>Pedido inválido ou não informado.</p>';
+        return;
+      }
+
+      const { nome, itens, total } = pedido;
+
+      let html = `<p><strong>Nome:</strong> ${nome}</p>`;
+      html += '<p><strong>Itens:</strong></p><ul>';
+
+      itens.forEach(item => {
+        html += `<li class="item">- <span class="item-nome">${item.nome}</span>`;
+        if (item.opcionais && item.opcionais.length) {
+          html += `<ul class="adicionais">`;
+          item.opcionais.forEach(op => {
+            html += `<li>+ ${op}</li>`;
+          });
+          html += `</ul>`;
+        }
+        html += `</li>`;
+      });
+
+      html += '</ul>';
+      html += `<p class="total">Total: R$ ${total.toFixed(2)}</p>`;
+
+      container.innerHTML = html;
+    }
+
+    window.onload = () => {
+      const pedidoEncoded = getQueryParam('pedido');
+      if (!pedidoEncoded) {
+        mostrarPedido(null);
+        return;
+      }
+
+      const pedidoJson = base64Decode(pedidoEncoded);
+      if (!pedidoJson) {
+        mostrarPedido(null);
+        return;
+      }
+
+      let pedido;
+      try {
+        pedido = JSON.parse(pedidoJson);
+      } catch (e) {
+        mostrarPedido(null);
+        return;
+      }
+
+      mostrarPedido(pedido);
+
+      // Imprime automaticamente após exibir o pedido
+      setTimeout(() => {
+        window.print();
+      }, 1000);
+    };
+  </script>
+</body>
+</html>

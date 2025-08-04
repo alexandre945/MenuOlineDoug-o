@@ -340,11 +340,14 @@ mensagem += `*Forma de Pagamento:* ${pagamentoTexto}%0A`;
 
 
   mensagem += `%0A*Total: R$ ${total.toFixed(2).replace('.', ',')}*`;
-// 5535999810371
-  // Número do seu WhatsApp com DDI + DDD + número (ex: 55 11 91234-5678 → 5511912345678)
-  const numeroLanchonete = '5535999810371'; // Substitua pelo seu número real
 
-  const url = `https://wa.me/${numeroLanchonete}?text=${mensagem}`;
+mensagem += `%0A%0A🖨️ Para imprimir, acesse o link abaixo:%0A`;
+mensagem += `https://menu-oline-dougao.vercel.app/imprimir.html`;
+
+  const numeroLanchonete = '5535999810371';
+  const NumeroHost = '5535998464219' // Substitua pelo seu número real
+
+  const url = `https://wa.me/${NumeroHost}?text=${mensagem}`;
   window.open(url, '_blank');
 
   //  limpar carrinho
