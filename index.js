@@ -337,22 +337,6 @@ if (formaPagamento === 'dinheiro') {
   pagamentoTexto = `Cartão (${tipoCartao})`;
 }
 
-    const pedidoParaImpressao = {
-  nome: nomeCliente,       // pega do formulário
-  itens: carrinho.map(item => ({
-    nome: item.nome,
-    opcionais: item.opcionais || []
-  })),
-  total: total              // o total calculado
-};
-const jsonPedido = JSON.stringify(pedidoParaImpressao);
-const base64 = btoa(encodeURIComponent(jsonPedido));
-
-const linkImpressao = `https://menu-oline-dougao.vercel.app/imprimir.html?pedido=${base64}`;
-
-mensagem += `🖨️ Para imprimir, acesse o link abaixo:%0A`;
-mensagem += `${linkImpressao}`;
-
 
 mensagem += `*Forma de Pagamento:* ${pagamentoTexto}%0A`;
 
