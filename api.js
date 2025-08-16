@@ -66,4 +66,15 @@ function renderProdutos(lista, containerId) {
 
     container.appendChild(card);
   });
+ 
+  // Se for container de promoções, esconde a seção se não houver itens
+  if (containerId === 'promocoes-container') {
+    const sectionPromotion = document.getElementById('secao-promocoes');
+    if (lista.length === 0) {
+      sectionPromotion.classList.add('hidden'); // esconde
+    } else {
+      sectionPromotion.classList.remove('hidden'); // mostra
+    }
+  }
+
 }
