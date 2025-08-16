@@ -17,13 +17,14 @@ function renderProdutos(lista, containerId) {
   const container = document.getElementById(containerId);
   container.innerHTML = ''; // limpa conteúdo anterior
 
+
   lista.forEach((item, index) => {
     const number = index + 1;
     const card = document.createElement('div');
 
     if (containerId === 'promocoes-container') {
       // estilo diferenciado, mas sem quebrar layout
-      card.className = 'p-2 border rounded shadow-sm bg-yellow-50'; // padding igual aos outros cards
+      card.className = 'p-2 border border-yellow-500  rounded shadow-sm bg-white'; // padding igual aos outros cards
       card.innerHTML = `
         <h3 class="font-bold text-lg text-red-600">
           <span class="mr-2">${number}.</span>${item.name}
