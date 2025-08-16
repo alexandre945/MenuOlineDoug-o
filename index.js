@@ -364,7 +364,7 @@ function verificarStatusLoja() {
 
   if (diaSemana === 1) {
     // Segunda-feira
-    statusTexto.textContent = "❌ Fechado. Abriremos amanhã às 19h.";
+    statusTexto.textContent = "❌ Fechado. Abriremos amanhã às 19:00h.";
     statusTexto.className = "text-sm text-red-600";
   } else if (hora >= 19 && hora < 24) {
     // Dentro do horário de funcionamento
@@ -372,7 +372,7 @@ function verificarStatusLoja() {
     statusTexto.className = "text-sm text-green-600";
   } else {
     // Fora do horário
-    statusTexto.textContent = "❌ Fechado. Abrimos hoje às 19h.";
+    statusTexto.textContent = "❌ Fechado. Abrimos hoje às 19:00h.";
     statusTexto.className = "text-sm text-red-600";
   }
 }
