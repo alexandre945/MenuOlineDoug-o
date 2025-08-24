@@ -52,14 +52,14 @@ function renderProdutos(lista, containerId) {
         <p class="text-sm text-gray-600 break-words overflow-hidden">${item.description || ''}</p>
         <p class="text-green-600 font-extrabold rounded mt-1 bg-yellow-300 w-24 p-2">R$ ${item.price.toFixed(2)}</p>
         <button 
-          class="mt-2 bg-yellow-400 px-3 py-1 rounded w-[calc(100%-1rem)] mx-2" 
+          class="mt-2 bg-green-400 px-3 py-1 rounded w-[calc(100%-1rem)] mx-2" 
           onclick="abrirModal(
             '${item.name.replace(/'/g, "\\'")}', 
             '${(item.description || '').replace(/'/g, "\\'")}', 
             ${item.price}, 
             ${item.category_id === 1}
           )">
-          Adicionar
+          Adicionar ao Carrinho 🛒
         </button>
       `;
     }
