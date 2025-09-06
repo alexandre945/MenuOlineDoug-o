@@ -6,10 +6,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="google8852877f24aa8e20" />
-  
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Cardápio Dougão Lanches</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/tailwindcss.css">
+    <title>Cardápio Online Dougão Lanches</title>
+    
     <script>
       function mudarPagina(paginaId) {
         document.getElementById(paginaId).scrollIntoView({ behavior: 'smooth' });
@@ -95,15 +96,11 @@
 
         <!-- Opcionais aparecem aqui via JS -->
         <div id="modal-opcionais" class="mb-2 block"></div>
-
         <div class="flex justify-end gap-2">
           <button onclick="adicionarAoCarrinho()" class="bg-green-500 text-white px-3 py-1 rounded">Adicionar ao Carrinho</button>
           <button onclick="fecharModal()" class="bg-red-500 px-3 py-1 rounded text-white">Cancelar</button>
         </div>
       </dialog>
-
-        
-
      <script src="./index.js"></script>
      <script src="./api.js"></script>
   </body>
