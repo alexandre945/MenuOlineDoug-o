@@ -99,9 +99,35 @@
           <button onclick="fecharModal()" class="bg-red-500 px-3 py-1 rounded text-white">Cancelar</button>
         </div>
       </dialog>
+
+
+   <dialog id="dialog-confirmacao" class="rounded-2xl p-6 w-[90%] max-w-md shadow-xl">
+      <h2 class="text-xl font-bold mb-4 text-center">📋 Confirmar Pedido</h2>
+
+      <div id="resumo-pedido" class="text-sm space-y-1 mb-4"></div>
+
+      <div class="flex justify-end gap-3 mt-6">
+        <button 
+          onclick="confirmarEnvio()" 
+          class="bg-green-600 hover:bg-green-700 text-white font-medium px-4 py-2 rounded-lg shadow">
+          ✅ Confirmar e Enviar
+        </button>
+        <button 
+          onclick="document.getElementById('dialog-confirmacao').close()" 
+          class="bg-red-500 hover:bg-red-600 text-white font-medium px-4 py-2 rounded-lg shadow">
+          ↩ Voltar e Corrigir
+        </button>
+      </div>
+   </dialog>
+
+       
+
+
      <script src="./index.js"></script>
      <script src="./api.js"></script>
   </body>
 </html>  
+
+
 
  

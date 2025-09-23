@@ -1,3 +1,89 @@
+
+function abrirConfirmacao() {
+  const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  if (carrinho.length === 0) return alert('Carrinho vazio');
+
+  let html = "";
+  let total = 0;
+
+  // Itens do carrinho
+  carrinho.forEach(item => {
+    const subtotal = (item.precoBase * item.quantidade) + item.precoAdicionais;
+    total += subtotal;
+
+    html += `<p><strong>${item.nome} $${item.precoBase.toFixed(2)}</strong> <br> Quantidade${item.quantidade}</p>`;
+    if (item.opcionais.length > 0) {
+      html += `<p class="ml-2">Adicionais: ${item.opcionais.join(", ")} (R$ ${item.precoAdicionais.toFixed(2)})</p>`;
+    }
+    if (item.observation) {
+      html += `<p class="ml-2">Obs: ${item.observation}</p>`;
+    }
+    html += `<p class="ml-2">Subtotal: R$ ${subtotal.toFixed(2)}</p><hr class="my-2">`;
+  });
+
+  // Tipo de pedido
+  const tipoPedido = document.querySelector('input[name="tipoPedido"]:checked')?.value || '';
+  html += `<hr class="my-2"><p><strong>Tipo de Pedido:</strong> ${tipoPedido === 'entrega' ? 'Entrega' : 'Retirar na lanchonete'}</p>`;
+
+  // Dados do cliente
+  if (tipoPedido === 'entrega') {
+    const nome = document.getElementById('nomeClienteEntrega').value;
+    const zap = document.getElementById('zapClienteEntrega').value;
+    const bairro = document.getElementById('bairro').value;
+    const rua = document.getElementById('rua').value;
+    const numero = document.getElementById('numero').value;
+    const referencia = document.getElementById('referencia').value;
+
+    html += `<p><strong>Nome:</strong> ${nome}</p>`;
+    html += `<p><strong>WhatsApp:</strong> ${zap}</p>`;
+    html += `<p><strong>Endereço:</strong> Rua ${rua}, nº ${numero}, Bairro ${bairro}</p>`;
+    if (referencia) html += `<p><strong>Referência:</strong> ${referencia}</p>`;
+
+    total += 7; // taxa entrega
+    html += `<p><strong>Taxa de Entrega:</strong> R$ 7,00</p>`;
+  } else {
+    const nome = document.getElementById('nomeCliente').value;
+    const zap = document.getElementById('zapCliente').value;
+
+    html += `<p><strong>Nome:</strong> ${nome}</p>`;
+    html += `<p><strong>WhatsApp:</strong> ${zap}</p>`;
+  }
+
+  // Observação geral
+  const observacao = document.getElementById('observacao')?.value || '';
+  if (observacao) {
+    html += `<p><strong>Observação:</strong> ${observacao}</p>`;
+  }
+
+  // Forma de pagamento
+  const formaPagamento = document.querySelector('input[name="formaPagamento"]:checked')?.value || '';
+  if (formaPagamento === 'dinheiro') {
+    const valorTroco = document.getElementById('valorTroco').value;
+    html += `<p><strong>Pagamento:</strong> Dinheiro (troco para R$ ${valorTroco})</p>`;
+  } else if (formaPagamento === 'cartao') {
+    const tipoCartao = document.getElementById('tipoCartao').value;
+    html += `<p><strong>Pagamento:</strong> Cartão (${tipoCartao})</p>`;
+  }
+
+  // Total final
+  html += `<hr class="my-2"><p class="font-bold text-lg">Total: R$ ${total.toFixed(2)}</p>`;
+
+  // Coloca tudo no modal
+  document.getElementById("resumo-pedido").innerHTML = html;
+
+  // Abre o modal de confirmação
+  document.getElementById("dialog-confirmacao").showModal();
+}
+
+// Função que fecha o modal e envia o pedido
+function confirmarEnvio() {
+  const dialog = document.getElementById("dialog-confirmacao");
+  if (dialog && dialog.open) {
+    dialog.close();
+  }
+  enviarPedido(); // chama sua função que envia o pedido via WhatsApp
+}
+
 function abrirModal(nome, descricao, preco, exibirOpcionais = true) {
   document.getElementById('modal-nome').textContent = nome;
   document.getElementById('modal-descricao').textContent = descricao;
@@ -144,7 +230,7 @@ function adicionarAoCarrinho() {
       </div>
     `;
   });
-
+ 
   // 🔸 Tipo de Pedido
   html += `
     <div class="mt-4">
@@ -212,7 +298,8 @@ function adicionarAoCarrinho() {
   }
 
   html += `<p class="font-bold mt-2 bg-white p-2">Total: R$ ${total.toFixed(2)}</p>`;
-  html += `<button onclick="enviarPedido()" class="bg-green-500 text-white px-4 py-2 rounded mt-2">Enviar Pedido</button>`;
+  html += `<button onclick="abrirConfirmacao()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded mt-2 shadow">Enviar</button>`;
+
 
   container.innerHTML = html;
 }
@@ -345,8 +432,8 @@ mensagem += `*Forma de Pagamento:* ${pagamentoTexto}%0A`;
 
 
 
-  const numeroLanchonete = '5535999810371';
-  const NumeroHost = '5535998464219' // Substitua pelo seu número real
+  const numeroLanchonete = '5535999810371'; // numeroLanchonete
+  const NumeroHost = '5535998464219' // numero do host
 
   const url = `https://wa.me/${numeroLanchonete}?text=${mensagem}`;
   window.open(url, '_blank');
@@ -355,6 +442,7 @@ mensagem += `*Forma de Pagamento:* ${pagamentoTexto}%0A`;
   localStorage.removeItem('carrinho');
   exibirCarrinho();
 }
+
 function verificarStatusLoja() {
   const agora = new Date();
   const diaSemana = agora.getDay(); // 0 = domingo, 1 = segunda, ..., 6 = sábado
