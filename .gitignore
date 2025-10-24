@@ -1,1 +1,14 @@
 node_modules/
+.env
+# Ignorar logs
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Ignorar arquivos temporários do sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar build/output temporário (opcional)
+.vercel
+dist

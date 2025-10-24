@@ -50,9 +50,9 @@ function renderProdutos(lista, containerId) {
       card.innerHTML = `
         <h3 class="font-bold text-lg"><span class="mr-2">${number}.</span>${item.name}</h3>
         <p class="text-sm text-gray-600 break-words overflow-hidden">${item.description || ''}</p>
-        <p class=" font-extrabold rounded mt-1 bg-green-200 w-24 p-2">R$ ${item.price.toFixed(2)}</p>
+        <p class=" font-extrabold rounded border-2 border-green-400  mt-1 bg-green-200 w-24 p-2">R$ ${item.price.toFixed(2)}</p>
         <button 
-          class="mt-2 bg-green-400 px-3 py-1 rounded w-[calc(100%-1rem)] mx-2" 
+          class="mt-2  bg-green-400 border-2 border-green-600 px-3 py-1 rounded w-[calc(100%-1rem)] mx-2" 
           onclick="abrirModal(
             '${item.name.replace(/'/g, "\\'")}', 
             '${(item.description || '').replace(/'/g, "\\'")}', 

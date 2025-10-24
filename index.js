@@ -1,4 +1,5 @@
 
+
 function abrirConfirmacao() {
   const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
   if (carrinho.length === 0) return alert('Carrinho vazio');
@@ -349,99 +350,149 @@ function adicionarAoCarrinho() {
   exibirCarrinho();
 }
 
-function enviarPedido() {
+async function enviarPedido() {
   const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
   if (carrinho.length === 0) return alert('Carrinho vazio');
 
   let mensagem = '*🛒 Pedido DOUGÃO LANCHES*%0A%0A';
   let total = 0;
 
+  // Monta os itens
   carrinho.forEach(item => {
     const subtotal = (item.precoBase * item.quantidade) + item.precoAdicionais;
     total += subtotal;
-  
+
     mensagem += ` ${item.nome}%0A`;
     mensagem += ` quantidade ${item.quantidade}%0A`;
     mensagem += ` observação ${item.observation || ''}%0A`;
-  
+
     if (item.opcionais.length > 0) {
       mensagem += `  Adicionais: ${item.opcionais.join(', ')}%0A`;
     }
-  
+
     mensagem += `  Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}%0A%0A`;
   });
-  
 
-  // Tipo de pedido
-  const tipoPedido = document.querySelector('input[name="tipoPedido"]:checked').value;
-  mensagem += `*Tipo de Pedido:* ${tipoPedido === 'entrega' ? 'Entrega' : 'Retirar na lanchonete'}%0A`;
+  // Pega tipo de pedido
+  const tipoPedido = document.querySelector('input[name="tipoPedido"]:checked')?.value;
   const observacao = document.getElementById('observacao')?.value || '';
+
+  // Declara variáveis acessíveis em todo o escopo
+  let nome = '';
+  let zap = '';
+  let bairro = '';
+  let rua = '';
+  let numero = '';
+  let referencia = '';
+
+  // Se for entrega
   if (tipoPedido === 'entrega') {
     total += 7;
 
-    const nome = document.getElementById('nomeClienteEntrega').value;
-    const zap = document.getElementById('zapClienteEntrega').value;
-    const bairro = document.getElementById('bairro').value;
-    const rua = document.getElementById('rua').value;
-    const numero = document.getElementById('numero').value;
-    const referencia = document.getElementById('referencia').value;
-    
-
+    nome = document.getElementById('nomeClienteEntrega').value;
+    zap = document.getElementById('zapClienteEntrega').value;
+    bairro = document.getElementById('bairro').value;
+    rua = document.getElementById('rua').value;
+    numero = document.getElementById('numero').value;
+    referencia = document.getElementById('referencia').value;
 
     if (!nome || !zap || !bairro || !rua || !numero) {
       alert('Preencha todos os campos de entrega.');
       return;
     }
 
+    mensagem += `*Tipo de Pedido:* Entrega%0A`;
     mensagem += `*Nome:* ${nome}%0A`;
     mensagem += `*WhatsApp:* ${zap}%0A`;
-    mensagem += `\n📝 Observação: ${observacao}`;
-
+    mensagem += `📝 Observação: ${observacao}%0A`;
     mensagem += `*Endereço:* Rua ${rua}, nº ${numero}, Bairro ${bairro}%0A`;
     if (referencia) mensagem += `*Referência:* ${referencia}%0A`;
+
   } else {
-    const nome = document.getElementById('nomeCliente').value;
-    const zap = document.getElementById('zapCliente').value;
-    
+    // Retirada
+    nome = document.getElementById('nomeCliente').value;
+    zap = document.getElementById('zapCliente').value;
 
     if (!nome || !zap) {
       alert('Preencha nome e WhatsApp.');
       return;
     }
 
+    mensagem += `*Tipo de Pedido:* Retirar na lanchonete%0A`;
     mensagem += `*Nome:* ${nome}%0A`;
     mensagem += `*WhatsApp:* ${zap}%0A`;
-    mensagem += `\n📝 Observação: ${observacao}%0A`;
+    mensagem += `📝 Observação: ${observacao}%0A`;
   }
+
+  // Forma de pagamento
   const formaPagamento = document.querySelector('input[name="formaPagamento"]:checked')?.value || '';
-let pagamentoTexto = '';
+  let pagamentoTexto = '';
 
-if (formaPagamento === 'dinheiro') {
-  const valorTroco = document.getElementById('valorTroco').value;
-  pagamentoTexto = `Dinheiro (troco para R$ ${valorTroco})`;
-} else if (formaPagamento === 'cartao') {
-  const tipoCartao = document.getElementById('tipoCartao').value;
-  pagamentoTexto = `Cartão (${tipoCartao})`;
-}
+  if (formaPagamento === 'dinheiro') {
+    const valorTroco = document.getElementById('valorTroco').value;
+    pagamentoTexto = `Dinheiro (troco para R$ ${valorTroco})`;
+  } else if (formaPagamento === 'cartao') {
+    const tipoCartao = document.getElementById('tipoCartao').value;
+    pagamentoTexto = `Cartão (${tipoCartao})`;
+  }
 
-
-mensagem += `*Forma de Pagamento:* ${pagamentoTexto}%0A`;
-
-
+  // Total e envio para WhatsApp
+  mensagem += `*Forma de Pagamento:* ${pagamentoTexto}%0A`;
   mensagem += `%0A*Total: R$ ${total.toFixed(2).replace('.', ',')}*`;
 
+  const nunber_host = '5535998464219';
+  const nunberCliente  = '5535999810371';
+  const url = `https://wa.me/${nunberCliente}?text=${mensagem}`;
+// abre o WhatsApp em nova aba
 
+window.location.href = url;
 
-  const numeroLanchonete = '5535999810371'; // numeroLanchonete
-  const NumeroHost = '5535998464219' // numero do host
-
-  const url = `https://wa.me/${numeroLanchonete}?text=${mensagem}`;
-  window.open(url, '_blank');
-
-  //  limpar carrinho
+  // Limpa carrinho
   localStorage.removeItem('carrinho');
-  exibirCarrinho();
+   setTimeout(() => {
+    exibirCarrinho();
+  }, 200);
+  
+  // Organiza o pedido para salvar no jsonBin
+  const pedidoParaSalvar = {
+    cliente: {
+      nome,
+      whatsapp: zap,
+      endereco: tipoPedido === 'entrega' ? { bairro, rua, numero, referencia } : null,
+    },
+    carrinho,
+    pagamento: {
+      tipo: formaPagamento,
+      detalhe: pagamentoTexto
+    },
+    tipoPedido,
+    observacao,
+    total,
+    mensagem
+  };
+
+  // Envia para backend
+  try {
+    await fetch("/api/pedidos", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(pedidoParaSalvar)
+    });
+    console.log("✅ Pedido salvo no banco!");
+  } catch (err) {
+    console.error("Erro ao salvar no banco:", err);
+  }
+
+  // Limpa carrinho
+  localStorage.removeItem('carrinho');
+   setTimeout(() => {
+    exibirCarrinho();
+  }, 200);
 }
+
+
+
+
 
 function verificarStatusLoja() {
   const agora = new Date();
