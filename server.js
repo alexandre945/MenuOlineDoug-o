@@ -19,6 +19,7 @@ app.use(cors({
 
 app.use(express.json());
 app.use("/api/pedidos", pedidosRouter);
+app.use(express.static(path.join(__dirname, "public")));
 
 if (process.env.NODE_ENV !== "production") {
   app.listen(process.env.PORT || 5000, () =>
