@@ -20,4 +20,11 @@ app.use(cors({
 app.use(express.json());
 app.use("/api/pedidos", pedidosRouter);
 
-app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
+if (process.env.NODE_ENV !== "production") {
+  app.listen(process.env.PORT || 5000, () =>
+    console.log(`Servidor rodando na porta ${process.env.PORT || 5000}`)
+  );
+}
+
+export default app;
+// app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
