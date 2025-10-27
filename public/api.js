@@ -46,22 +46,31 @@ function renderProdutos(lista, containerId) {
       `;
     } else {
       // layout padrão
-      card.className = 'p-2 border rounded shadow-sm bg-white';
-      card.innerHTML = `
-        <h3 class="font-bold text-lg"><span class="mr-2">${number}.</span>${item.name}</h3>
-        <p class="text-sm text-gray-600 break-words overflow-hidden">${item.description || ''}</p>
-        <p class=" font-extrabold rounded border-2 border-green-400  mt-1 bg-green-200 w-24 p-2">R$ ${item.price.toFixed(2)}</p>
-        <button 
-          class="mt-2  bg-green-400 border-2 border-green-600 px-3 py-1 rounded w-[calc(100%-1rem)] mx-2" 
-          onclick="abrirModal(
-            '${item.name.replace(/'/g, "\\'")}', 
-            '${(item.description || '').replace(/'/g, "\\'")}', 
-            ${item.price}, 
-            ${item.category_id === 1}
-          )">
-          Adicionar ao Carrinho 🛒
-        </button>
-      `;
+card.className = 'p-3 border border-yellow-300 rounded-xl shadow-sm bg-gradient-to-b from-yellow-50 to-white hover:shadow-md transition-all duration-200';
+
+card.innerHTML = `
+  <h3 class="font-extrabold text-lg text-red-600 flex items-center gap-2">
+    <span class="text-yellow-500">${number}.</span> ${item.name}
+  </h3>
+  <p class="text-sm text-gray-700 italic mb-2 break-words overflow-hidden">${item.description || ''}</p>
+
+  <p class="font-extrabold text-yellow-700 bg-yellow-100 border-2 border-yellow-400 rounded-lg inline-block px-3 py-1 mb-3 shadow-sm">
+    R$ ${item.price.toFixed(2)}
+  </p>
+
+  <button 
+    class="w-full font-extrabold text-yellow-700 bg-yellow-100 border-2 border-yellow-400 p-2 rounded-lg  hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+    onclick="abrirModal(
+      '${item.name.replace(/'/g, "\\'")}', 
+      '${(item.description || '').replace(/'/g, "\\'")}', 
+      ${item.price}, 
+      ${item.category_id === 1}
+    )">
+    Adicionar ao Carrinho 🛒
+  </button>
+`;
+
+
     }
 
     container.appendChild(card);

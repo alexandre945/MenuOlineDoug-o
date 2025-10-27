@@ -21,19 +21,51 @@
   <body class="bg-yellow-50 text-gray-800">
 
     <header class="sticky top-0 z-10 bg-yellow-400 shadow p-4 flex flex-col gap-2">
-        <div class="max-w-4xl mx-auto flex items-center justify-between">
-          <p class="text-3xl pr-2" >🍔</p> <h1 class="font-bold text-3xl text-center text-red-500"> Dougão Lanches</h1>
-          <a href="/admin.html">
-           <img class="w-16 h-16 object-cover  rounded-full border-2 border-white shadow" src="./image/logo.png" src="./image/logo.png" alt="Logo Dougão">
-          </a>         
-        </div>
+            
+           <div class="max-w-4xl mx-auto flex items-center justify-between md:px-2 flex-wrap md:flex-nowrap">
+                <!-- Ícone + Nome -->
+                <div class="flex items-center gap-2 md:gap-3 flex-shrink md:flex-nowrap">
+                  <a href="/admin.html"
+                    class="transition-all hover:scale-105 active:scale-95 duration-150 block rounded-full border border-yellow-300 shadow p-2">
+                    <p class="text-2xl sm:text-3xl text-center">🍔</p>
+                  </a>
+
+                  <h1 class="font-extrabold text-xl sm:text-2xl md:text-3xl text-red-600 drop-shadow-sm tracking-wide leading-tight">
+                    Dougão&nbsp;Lanches
+                  </h1>
+                </div>
+
+                <!-- Logo -->
+                <img
+                  class="w-12 sm:w-14 h-12 sm:h-14 rounded-full border-4 border-yellow-300 shadow-md object-cover bg-white mt-2 md:mt-0"
+                  src="./image/logo.png"
+                  alt="Logo Dougão">
+              </div>
+                 <nav class="flex justify-between md:justify-center flex-nowrap gap-1 md:gap-3 mt-3 px-1 overflow-x-auto scrollbar-hide">
+                    <button onclick="mudarPagina('secao-lanches')"
+                      class="flex-shrink-0 px-3 py-1 text-xs sm:text-sm font-semibold rounded-md bg-gradient-to-b from-yellow-200 to-yellow-100 border border-yellow-400 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:from-yellow-100 hover:to-white transition-all">
+                      🍔 Lanches
+                    </button>
+                    <button onclick="mudarPagina('combos')"
+                      class="flex-shrink-0 px-3 py-1 text-xs sm:text-sm font-semibold rounded-md bg-gradient-to-b from-yellow-200 to-yellow-100 border border-yellow-400 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:from-yellow-100 hover:to-white transition-all">
+                      🍟 Combos
+                    </button>
+                    <button onclick="mudarPagina('secao-bebidas')"
+                      class="flex-shrink-0 px-3 py-1 text-xs sm:text-sm font-semibold rounded-md bg-gradient-to-b from-yellow-200 to-yellow-100 border border-yellow-400 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:from-yellow-100 hover:to-white transition-all">
+                      🥤 Bebidas
+                    </button>
+                    <button onclick="mudarPagina('bomboniere')"
+                      class="flex-shrink-0 px-3 py-1 text-xs sm:text-sm font-semibold rounded-md bg-gradient-to-b from-yellow-200 to-yellow-100 border border-yellow-400 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:from-yellow-100 hover:to-white transition-all">
+                      🍫 Bomboniere
+                    </button>
+                  </nav>
+
+  
+
+
       
-        <nav class="flex justify-center gap-2 my-4">
-          <button onclick="mudarPagina('secao-lanches')" class="px-3 py-1 text-sm rounded border border-black bg-green-300  hover:bg-yellow-300 hover:text-black transition">Lanches</button>
-          <button onclick="mudarPagina('combos')" class="px-3 py-1 text-sm rounded border border-black bg-green-300 shadow hover:bg-yellow-300 hover:text-black transition">Combos</button>
-          <button onclick="mudarPagina('secao-bebidas')" class="px-3 py-1 text-sm rounded border border-black bg-green-300 shadow hover:bg-yellow-300 hover:text-black transition">Bebidas</button>
-          <button onclick="mudarPagina('bomboniere')" class="px-3 py-1 text-sm rounded border border-black bg-green-300 shadow hover:bg-yellow-300 hover:text-black transition">Bomboniere</button>
-        </nav>
+          
+
         <div class="text-center text-sm">
           <p>Horarío de funcionamento das 19:00h a 23:30 <br> de Terça a Domingo </p>
         </div>  
