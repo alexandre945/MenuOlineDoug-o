@@ -22,53 +22,58 @@
 
     <header class="sticky top-0 z-10 bg-yellow-400 shadow p-4 flex flex-col gap-2">
             
-           <div class="max-w-4xl mx-auto flex items-center justify-between md:px-2 flex-wrap md:flex-nowrap">
-                <!-- Ícone + Nome -->
-                <div class="flex items-center gap-2 md:gap-3 flex-shrink md:flex-nowrap">
-                  <a href="/admin.html"
-                    class="transition-all hover:scale-105 active:scale-95 duration-150 block rounded-full border border-yellow-300 shadow p-2">
-                    <p class="text-2xl sm:text-3xl text-center">🍔</p>
-                  </a>
+      <div class="max-w-5xl mx-auto flex items-center justify-between px-6 sm:px-10 py-3">
+        <!-- Ícone 🍔 -->
+        <a href="/admin.html"
+          class="transition-all hover:scale-105 active:scale-95 duration-150 block rounded-full ">
+          <p class="text-2xl sm:text-3xl text-cente md:mr-8">🍔</p>
+        </a>
 
-                  <h1 class="font-extrabold text-xl sm:text-2xl md:text-3xl text-red-600 drop-shadow-sm tracking-wide leading-tight">
-                    Dougão&nbsp;Lanches
-                  </h1>
-                </div>
-
-                <!-- Logo -->
-                <img
-                  class="w-12 sm:w-14 h-12 sm:h-14 rounded-full border-4 border-yellow-300 shadow-md object-cover bg-white mt-2 md:mt-0"
-                  src="./image/logo.png"
-                  alt="Logo Dougão">
-              </div>
-                 <nav class="flex justify-between md:justify-center flex-nowrap gap-1 md:gap-3 mt-3 px-1 overflow-x-auto scrollbar-hide">
-                    <button onclick="mudarPagina('secao-lanches')"
-                      class="flex-shrink-0 px-3 py-1 text-xs sm:text-sm font-semibold rounded-md bg-gradient-to-b from-yellow-200 to-yellow-100 border border-yellow-400 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:from-yellow-100 hover:to-white transition-all">
-                      🍔 Lanches
-                    </button>
-                    <button onclick="mudarPagina('combos')"
-                      class="flex-shrink-0 px-3 py-1 text-xs sm:text-sm font-semibold rounded-md bg-gradient-to-b from-yellow-200 to-yellow-100 border border-yellow-400 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:from-yellow-100 hover:to-white transition-all">
-                      🍟 Combos
-                    </button>
-                    <button onclick="mudarPagina('secao-bebidas')"
-                      class="flex-shrink-0 px-3 py-1 text-xs sm:text-sm font-semibold rounded-md bg-gradient-to-b from-yellow-200 to-yellow-100 border border-yellow-400 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:from-yellow-100 hover:to-white transition-all">
-                      🥤 Bebidas
-                    </button>
-                    <button onclick="mudarPagina('bomboniere')"
-                      class="flex-shrink-0 px-3 py-1 text-xs sm:text-sm font-semibold rounded-md bg-gradient-to-b from-yellow-200 to-yellow-100 border border-yellow-400 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:from-yellow-100 hover:to-white transition-all">
-                      🍫 Bomboniere
-                    </button>
-                  </nav>
-
+        <h1 class="text-2xl md:text-6xl font-black text-red-600 [text-shadow:_2px_2px_3px_rgb(0_0_0_/_0.4)]">
+          DOUGÃO&nbsp;LANCHES
+        </h1>
   
+        <!-- Logo -->
+        <img
+          class="w-12  sm:w-14 h-12 sm:h-14 rounded-full border-4 border-yellow-300 shadow-md object-cover bg-white md:ml-8"
+          src="./image/logo.png"
+          alt="Logo Dougão">
+      </div>
+        <nav class="flex justify-between md:justify-center flex-nowrap gap-1 md:gap-3 mt-3 px-1 overflow-x-auto scrollbar-hide">
+          <button onclick="mudarPagina('secao-lanches')"
+            class="flex-shrink-0 px-3 py-1 text-xs sm:text-sm font-semibold rounded-md bg-gradient-to-b from-yellow-200 to-yellow-100 border border-yellow-400 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:from-yellow-100 hover:to-white transition-all">
+            🍔 Lanches
+          </button>
+          <button onclick="mudarPagina('combos')"
+            class="flex-shrink-0 px-3 py-1 text-xs sm:text-sm font-semibold rounded-md bg-gradient-to-b from-yellow-200 to-yellow-100 border border-yellow-400 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:from-yellow-100 hover:to-white transition-all">
+            🍟 Combos
+          </button>
+          <button onclick="mudarPagina('secao-bebidas')"
+            class="flex-shrink-0 px-3 py-1 text-xs sm:text-sm font-semibold rounded-md bg-gradient-to-b from-yellow-200 to-yellow-100 border border-yellow-400 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:from-yellow-100 hover:to-white transition-all">
+            🥤 Bebidas
+          </button>
+          <button onclick="mudarPagina('bomboniere')"
+            class="flex-shrink-0 px-3 py-1 text-xs sm:text-sm font-semibold rounded-md bg-gradient-to-b from-yellow-200 to-yellow-100 border border-yellow-400 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:from-yellow-100 hover:to-white transition-all">
+            🍫 Bomboniere
+          </button>
+        </nav>
+             <div class="text-center text-sm sm:text-base leading-snug px-4">
+                <p class="font-medium">
+                  Horário de funcionamento:
+                  <span class="block sm:inline font-normal">
+                    das <strong>19:00h às 23:30h</strong> — de <strong>Terça a Domingo</strong>
+                  </span>
+                </p>
 
+                <p class="mt-1 text-gray-800 font-medium flex items-center justify-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                    <circle cx="12" cy="9" r="2.5" fill="#FFF"/>
+                  </svg>
+                  Rua Batista Luzardo, 1005 — São Lourenço, MG
+                </p>
+              </div>
 
-      
-          
-
-        <div class="text-center text-sm">
-          <p>Horarío de funcionamento das 19:00h a 23:30 <br> de Terça a Domingo </p>
-        </div>  
         <div id="statusLoja" class="text-center text-lg font-semibold mt-4">
           <p class="text-sm" id="statusTexto"></p>
         </div>
