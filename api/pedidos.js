@@ -63,14 +63,17 @@ router.get("/", async (req, res) => {
 
     const data = await response.json();
     const pedidosAtuais = data.record || [];
-       // 👇 ignora o índice 0
-    const pedidosFiltrados = pedidosAtuais.slice(1);
-    res.json({ success: true, pedidos: pedidosFiltrados });
+
+    // remove índice 0 e coloca os mais recentes no topo
+    const pedidosOrdenados = pedidosAtuais.slice(1).reverse();
+
+    res.json({ success: true, pedidos: pedidosOrdenados });
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, error: error.message });
   }
 });
+
 
 // 🔹 DELETE /api/pedidos/:id → remove um pedido específico
 router.delete("/:id", async (req, res) => {
