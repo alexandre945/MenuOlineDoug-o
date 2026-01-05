@@ -1,14 +1,32 @@
-fetch('https://dougaolanches.com.br/products-api-vercel')
+const API_URL = 'http://localhost:3002/api/products';
+fetch(API_URL)
   .then(response => response.json())
-  .then(data => {
-    const { lanches, bebidas, combos, bomboniere, promocoes } = data;
+ .then(products => {
+  const lanches = [];
+  const bebidas = [];
+  const combos = [];
+  const bomboniere = [];
+  const promocoes = [];
 
-    renderProdutos(lanches, 'lanches-container');
-    renderProdutos(bebidas, 'bebidas-container');
-    renderProdutos(combos, 'combos-container');
-    renderProdutos(bomboniere, 'bomboniere-container');
-    renderProdutos(promocoes, 'promocoes-container');
-  })
+  products.forEach(item => {
+    const categoria = item.category?.name?.toLowerCase();
+
+    if (categoria === 'lanches') lanches.push(item);
+    if (categoria === 'bebidas') bebidas.push(item);
+    if (categoria === 'combos') combos.push(item);
+    if (categoria === 'bomboniere') bomboniere.push(item);
+    if (categoria === 'promoções' || categoria === 'promocoes') {
+      promocoes.push(item);
+    }
+  });
+
+  renderProdutos(lanches, 'lanches-container');
+  renderProdutos(bebidas, 'bebidas-container');
+  renderProdutos(combos, 'combos-container');
+  renderProdutos(bomboniere, 'bomboniere-container');
+  renderProdutos(promocoes, 'promocoes-container');
+})
+
   .catch(error => {
     console.error('Erro ao buscar os produtos:', error);
   });
@@ -31,15 +49,15 @@ function renderProdutos(lista, containerId) {
         </h3>
         <p class="text-sm text-gray-700 mb-2 break-words overflow-hidden">${item.description || ''}</p>
         <p class="text-lg font-extrabold text-green-600 bg-yellow-300 inline-block px-2 py-1 rounded">
-          R$ ${item.price.toFixed(2)}
+          R$ ${Number(item.price).toFixed(2)}
         </p>
         <button 
           class="mt-2 bg-red-500 text-white px-3 py-1 rounded w-[calc(100%-1rem)] mx-2" 
           onclick="abrirModal(
             '${item.name.replace(/'/g, "\\'")}', 
             '${(item.description || '').replace(/'/g, "\\'")}', 
-            ${item.price}, 
-            ${item.category_id === 1}
+             ${Number(item.price).toFixed(2)} 
+            ${item.category?.id === 1}
           )">
           Quero essa promoção 🔥
         </button>
@@ -55,7 +73,7 @@ card.innerHTML = `
   <p class="text-sm text-gray-700 italic mb-2 break-words overflow-hidden">${item.description || ''}</p>
 
   <p class="font-extrabold text-yellow-700 bg-yellow-100 border-2 border-yellow-400 rounded-lg inline-block px-3 py-1 mb-3 shadow-sm">
-    R$ ${item.price.toFixed(2)}
+    R$ ${Number(item.price).toFixed(2)} 
   </p>
 
   <button 
@@ -63,8 +81,8 @@ card.innerHTML = `
     onclick="abrirModal(
       '${item.name.replace(/'/g, "\\'")}', 
       '${(item.description || '').replace(/'/g, "\\'")}', 
-      ${item.price}, 
-      ${item.category_id === 1}
+      ${Number(item.price).toFixed(2)}  
+     ${item.category?.id === 1}
     )">
     Adicionar ao Carrinho 🛒
   </button>
