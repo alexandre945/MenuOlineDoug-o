@@ -126,7 +126,7 @@ export default function Page() {
     <>
       <Header />
       <StoreStatusBanner />
-      <main className="min-h-screen bg-yellow-50 text-gray-900 pt-64 px-4 pb-40 space-y-8">
+      <main className="min-h-screen bg-yellow-50 text-gray-900 pt-48 px-4 pb-40 space-y-8">
         {/* 🍔 Lanches */}
         <section id="lanches">
           <h2 className="text-xl text-center font-extrabold text-red-700 mb-3">

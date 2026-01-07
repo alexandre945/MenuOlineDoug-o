@@ -95,10 +95,19 @@ export default function Header() {
             </span>
           ) : (
             <span className="text-sm font-bold text-red-700 bg-red-100 border border-red-200 px-3 py-1 rounded-full">
-              🔴 Fechado no momento
+              🔴 Fechado
+                <p className="mt-2 text-center text-sm text-gray-600">
+          {isOpen === null
+            ? ""
+            : isOpen
+            ? "Estamos abertos! Aproveite para fazer seu pedido 👇"
+            : "Estamos fechados no momento. Abrimos de terça a domingo, das 19:00 às 23:30."}
+        </p>
             </span>
           )}
         </div>
+    
+
       </div>
     </header>
   );
