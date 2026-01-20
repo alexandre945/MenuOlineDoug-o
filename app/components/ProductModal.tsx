@@ -85,7 +85,7 @@ export default function ProductModal({ product, additionals, onClose }: Props) {
     <div className="fixed inset-0 z-[9999] bg-black/50 flex items-end sm:items-center justify-center p-3">
       {/* MODAL com layout em coluna */}
       <div className="bg-white text-black w-full sm:max-w-md rounded-t-2xl sm:rounded-2xl max-h-[85vh] flex flex-col overflow-hidden shadow-xl">
-        
+
         {/* HEADER fixo */}
         <div className="p-4 border-b bg-white sticky top-0 z-10">
           <div className="flex items-start justify-between gap-3">

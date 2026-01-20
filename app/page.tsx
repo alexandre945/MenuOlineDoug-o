@@ -565,11 +565,13 @@ export default function Page() {
 
                   // ===============================
                   // 4️⃣ Abre WhatsApp (mensagem continua igual)
+                
                   // ===============================
                   const msg = buildWhatsAppMessage({
                     items,
                     customerName,
                     customerPhone,
+                    customerNote,
                     orderType,
                     address,
                     neighborhood,

@@ -10,6 +10,7 @@ export type BuildWhatsAppInput = {
   // cliente
   customerName: string;
   customerPhone: string;
+  customerNote?: string; 
 
   // pedido
   orderType: OrderType;
@@ -100,6 +101,13 @@ export function buildWhatsAppMessage(input: BuildWhatsAppInput) {
   lines.push(`- Nome: ${input.customerName}`);
   lines.push(`- WhatsApp: ${onlyDigits(input.customerPhone)}`);
   lines.push("");
+
+    // Observação geral (do checkout)
+  if (input.customerNote?.trim()) {
+    lines.push("📝 *Observação:*");
+    lines.push(`- ${input.customerNote.trim()}`);
+    lines.push("");
+  }
 
   // Tipo + entrega
   lines.push("🚚 *Tipo:*");
