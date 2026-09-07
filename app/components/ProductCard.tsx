@@ -6,6 +6,7 @@ type ProductCardProps = {
   description?: string;
   price: number;
   onAdd: () => void;
+  isOpen: boolean;
 };
 
 export function ProductCard({
@@ -14,6 +15,7 @@ export function ProductCard({
   description,
   price,
   onAdd,
+  isOpen,
 }: ProductCardProps) {
   return (
     <div className="p-3 bg-white rounded-lg shadow text-sm">
@@ -26,18 +28,20 @@ export function ProductCard({
         <p className="text-gray-600">{description}</p>
       )}
 
-      <div className="mt-2 flex flex: items-center justify-between">
+      <div className="mt-2 flex items-center justify-between">
         <span className="font-semibold">
           R$ {price.toFixed(2).replace(".", ",")}
         </span>
 
-        <button
-          onClick={onAdd}
-          className="flex items-center gap-1 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold active:scale-95"
-        >
-          <ShoppingCart size={16} />
-          Adicionar
-        </button>
+        {isOpen && (
+          <button
+            onClick={onAdd}
+            className="flex items-center gap-1 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold active:scale-95"
+          >
+            <ShoppingCart size={16} />
+            Adicionar
+          </button>
+        )}
       </div>
     </div>
   );
