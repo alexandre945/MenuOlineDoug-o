@@ -94,7 +94,7 @@ useEffect(() => {
   //  stado do carrinho
   const [openCheckout, setOpenCheckout] = useState(false);
 
-  const DELIVERY_FEE = 7.00;
+  const DELIVERY_FEE = 8.00;
   const subtotal = items.reduce((sum, item) => {
     const itemTotal =
       item.price * item.quantity +
@@ -324,7 +324,7 @@ useEffect(() => {
             ))}
 
               {items.length > 0 && (() => {
-              const DELIVERY_FEE = 7;
+              const DELIVERY_FEE = 8.00;
 
               const subtotal = items.reduce((sum, item) => {
                 const itemTotal =
